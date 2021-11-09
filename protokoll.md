@@ -89,7 +89,6 @@ Spielebene im Schiff (WASD + Maus) – Overview Ebene mit Stats etc. (Point & Cl
 •	Reparatur
 •	Treibstoff auftanken  
 
-
 Objekte die User benutzen kann:
 
 ⁃	Kran im Frachtraum
