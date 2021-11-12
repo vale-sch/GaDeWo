@@ -91,12 +91,9 @@ Spielebene im Schiff (WASD + Maus) – Overview Ebene mit Stats etc. (Point & Cl
 
 Objekte die User benutzen kann:
 
-⁃	Kran im Frachtraum
-⁃	Steuerung des Schiffs (Ansicht des Navigationscomputers)
-⁃	Energiemanagement (Engineering) (Wahl wieviel Energie auf Schilde/Waffen und Triebwerke gelegt werden (Priorisierung))
+-   Kran im Frachtraum
+-   Steuerung des Schiffs (Ansicht des Navigationscomputers)
+-   Energiemanagement (Engineering) (Wahl wieviel Energie auf Schilde/Waffen und Triebwerke gelegt werden (Priorisierung))
 -   Gravitationskontrolle (Einstellungsrad)
 -   Laser/Traktorstrahl
 -   Schilde (Ausrichtung und Aktivierung)
-
-
-
