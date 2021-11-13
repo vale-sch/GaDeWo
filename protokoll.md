@@ -97,3 +97,16 @@ Objekte die User benutzen kann:
 -   Gravitationskontrolle (Einstellungsrad)
 -   Laser/Traktorstrahl
 -   Schilde (Ausrichtung und Aktivierung)
+
+
+13.11.2021
+
+Lead Artist und Game Designer: Bastian  --> Montag Schiffsprtotypen mitbringen um sie topdown als Prototyp nutzen zu können, sowie Sonderinteraktionen in Mini-Games. Scribbles/Sketches für Mini-Games bzw. Quests und Mood Board
+Lead Sound Designer: Viktor             --> Montag erste Soundbeispiele
+Lead Code Designer: Valentin & Marius   --> Unity Setup
+
+Bastian hat das Raumschiff mit 3DS Max nachgebaut und noch einen neuen optischen Entwurf eingebracht.
+
+Thema MiniGames: User eignet sich im Laufe des Spiels verschiedene Skills (z.B. Energiemanagement) an und kann diese benutzen um gewisse Probleme (Quests) auf dem Schiff zu lösen.
+
+Beispiel: Kaputter Frachter muss mit Traktorstrahl an Bord geholt werden und dann per Kran im Hangar/Frachtraum sortiert werden.
