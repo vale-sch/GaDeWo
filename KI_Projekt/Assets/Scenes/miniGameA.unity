@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 9dd6254dd5a1d964aac4183c6bd18c2b, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 541c4c5e1abb5744eb84946e058c0392, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -137,8 +137,8 @@ GameObject:
   - component: {fileID: 7309451}
   - component: {fileID: 7309455}
   m_Layer: 0
-  m_Name: Cube (7)
-  m_TagString: Untagged
+  m_Name: Node (4)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +217,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7309455
 MonoBehaviour:
@@ -327,8 +327,8 @@ GameObject:
   - component: {fileID: 176181984}
   - component: {fileID: 176181988}
   m_Layer: 0
-  m_Name: Cube (21)
-  m_TagString: Untagged
+  m_Name: Node (22)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -436,8 +436,8 @@ GameObject:
   - component: {fileID: 178013150}
   - component: {fileID: 178013154}
   m_Layer: 0
-  m_Name: Cube (29)
-  m_TagString: Untagged
+  m_Name: Node (32)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,7 +516,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 29
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &178013154
 MonoBehaviour:
@@ -545,8 +545,8 @@ GameObject:
   - component: {fileID: 192812383}
   - component: {fileID: 192812387}
   m_Layer: 0
-  m_Name: Cube (5)
-  m_TagString: Untagged
+  m_Name: Node (2)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -625,7 +625,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &192812387
 MonoBehaviour:
@@ -669,13 +669,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8543176851e0aa498b255eb522248b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  containerPrefab: {fileID: 4853486692539194226, guid: 4065aad52dcfe2c4b9bf7ce5350279ae, type: 3}
-  colArray:
-  - {r: 1, g: 0.08880386, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0.9534545, a: 0}
-  - {r: 1, g: 0.97981787, b: 0, a: 0}
-  - {r: 1, g: 0, b: 0.956861, a: 0}
-  - {r: 0, g: 1, b: 0.11066723, a: 0}
+  containerPrefab:
+  - {fileID: 3063168699924411221, guid: 73a0627662271d6499ee928b9349f91f, type: 3}
+  - {fileID: 3738254402374093840, guid: b75316b1e5a977e438fd6283655d7c48, type: 3}
+  - {fileID: 923327731894866996, guid: b55a2aff6b3d25549a3e4db3b89c016d, type: 3}
+  - {fileID: 9179394180158213238, guid: 8370b0da93f22df4a8f4cc7727dc887e, type: 3}
+  - {fileID: 2187312153559510258, guid: 164d633968b4f8942b4487cf55f2e89a, type: 3}
   spawnPoints:
   - {fileID: 2111069639}
   - {fileID: 1448138000}
@@ -808,8 +807,8 @@ GameObject:
   - component: {fileID: 313345786}
   - component: {fileID: 313345790}
   m_Layer: 0
-  m_Name: Cube (23)
-  m_TagString: Untagged
+  m_Name: Node (24)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -916,7 +915,7 @@ GameObject:
   - component: {fileID: 315210678}
   - component: {fileID: 315210677}
   m_Layer: 0
-  m_Name: Cube (32)
+  m_Name: SpawnNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -934,7 +933,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 32
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &315210677
 BoxCollider:
@@ -1012,8 +1011,8 @@ GameObject:
   - component: {fileID: 341058208}
   - component: {fileID: 341058212}
   m_Layer: 0
-  m_Name: Cube (31)
-  m_TagString: Untagged
+  m_Name: Node (34)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1092,7 +1091,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 31
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &341058212
 MonoBehaviour:
@@ -1182,6 +1181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 453305370}
+  - component: {fileID: 453305371}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -1200,49 +1200,67 @@ Transform:
   m_LocalPosition: {x: 5.612826, y: -2.316064, z: 5.5425634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1320248743}
-  - {fileID: 1677330868}
-  - {fileID: 1628834303}
-  - {fileID: 934852175}
   - {fileID: 1950469671}
   - {fileID: 192812386}
   - {fileID: 2033109334}
   - {fileID: 7309454}
+  - {fileID: 481081079}
   - {fileID: 2002683472}
   - {fileID: 678438993}
   - {fileID: 798093130}
   - {fileID: 589745660}
+  - {fileID: 568299721}
   - {fileID: 820598009}
   - {fileID: 1667319486}
   - {fileID: 1895810606}
   - {fileID: 1787274011}
+  - {fileID: 528314781}
   - {fileID: 2021364276}
   - {fileID: 1129047761}
   - {fileID: 1041618056}
   - {fileID: 1451432670}
+  - {fileID: 1573332436}
   - {fileID: 1045981119}
   - {fileID: 176181987}
   - {fileID: 523642401}
   - {fileID: 313345789}
+  - {fileID: 1831560070}
   - {fileID: 979240312}
   - {fileID: 1125682616}
   - {fileID: 2049931748}
   - {fileID: 1201234989}
+  - {fileID: 465561093}
   - {fileID: 1578643317}
   - {fileID: 178013153}
   - {fileID: 1430689697}
   - {fileID: 341058211}
-  - {fileID: 315210675}
-  - {fileID: 481081079}
-  - {fileID: 568299721}
-  - {fileID: 528314781}
-  - {fileID: 1573332436}
-  - {fileID: 1831560070}
-  - {fileID: 465561093}
   - {fileID: 522505821}
+  - {fileID: 1320248743}
+  - {fileID: 1677330868}
+  - {fileID: 1628834303}
+  - {fileID: 934852175}
+  - {fileID: 315210675}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &453305371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453305369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71483632d738be84e9a11fa2d436d46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containerPrefabs:
+  - {fileID: 3063168699924411221, guid: 73a0627662271d6499ee928b9349f91f, type: 3}
+  - {fileID: 3738254402374093840, guid: b75316b1e5a977e438fd6283655d7c48, type: 3}
+  - {fileID: 923327731894866996, guid: b55a2aff6b3d25549a3e4db3b89c016d, type: 3}
+  - {fileID: 9179394180158213238, guid: 8370b0da93f22df4a8f4cc7727dc887e, type: 3}
+  - {fileID: 2187312153559510258, guid: 164d633968b4f8942b4487cf55f2e89a, type: 3}
 --- !u!1 &465561092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,8 +1275,8 @@ GameObject:
   - component: {fileID: 465561095}
   - component: {fileID: 465561094}
   m_Layer: 0
-  m_Name: Cube (38)
-  m_TagString: Untagged
+  m_Name: Node (30)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1275,7 +1293,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 38
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &465561094
 MonoBehaviour:
@@ -1366,8 +1384,8 @@ GameObject:
   - component: {fileID: 481081081}
   - component: {fileID: 481081080}
   m_Layer: 0
-  m_Name: Cube (33)
-  m_TagString: Untagged
+  m_Name: Node (5)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1384,7 +1402,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 33
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &481081080
 MonoBehaviour:
@@ -1475,8 +1493,8 @@ GameObject:
   - component: {fileID: 522505823}
   - component: {fileID: 522505822}
   m_Layer: 0
-  m_Name: Cube (39)
-  m_TagString: Untagged
+  m_Name: Node (35)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1493,7 +1511,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 39
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &522505822
 MonoBehaviour:
@@ -1584,8 +1602,8 @@ GameObject:
   - component: {fileID: 523642398}
   - component: {fileID: 523642402}
   m_Layer: 0
-  m_Name: Cube (22)
-  m_TagString: Untagged
+  m_Name: Node (23)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1693,8 +1711,8 @@ GameObject:
   - component: {fileID: 528314783}
   - component: {fileID: 528314782}
   m_Layer: 0
-  m_Name: Cube (35)
-  m_TagString: Untagged
+  m_Name: Node (15)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1711,7 +1729,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 35
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &528314782
 MonoBehaviour:
@@ -1802,8 +1820,8 @@ GameObject:
   - component: {fileID: 568299723}
   - component: {fileID: 568299722}
   m_Layer: 0
-  m_Name: Cube (34)
-  m_TagString: Untagged
+  m_Name: Node (10)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1820,7 +1838,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 34
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &568299722
 MonoBehaviour:
@@ -1911,8 +1929,8 @@ GameObject:
   - component: {fileID: 589745657}
   - component: {fileID: 589745661}
   m_Layer: 0
-  m_Name: Cube (11)
-  m_TagString: Untagged
+  m_Name: Node (9)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1991,7 +2009,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &589745661
 MonoBehaviour:
@@ -2020,8 +2038,8 @@ GameObject:
   - component: {fileID: 678438990}
   - component: {fileID: 678438994}
   m_Layer: 0
-  m_Name: Cube (9)
-  m_TagString: Untagged
+  m_Name: Node (7)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2100,7 +2118,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &678438994
 MonoBehaviour:
@@ -2129,8 +2147,8 @@ GameObject:
   - component: {fileID: 798093127}
   - component: {fileID: 798093131}
   m_Layer: 0
-  m_Name: Cube (10)
-  m_TagString: Untagged
+  m_Name: Node (8)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2209,7 +2227,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &798093131
 MonoBehaviour:
@@ -2238,8 +2256,8 @@ GameObject:
   - component: {fileID: 820598006}
   - component: {fileID: 820598010}
   m_Layer: 0
-  m_Name: Cube (12)
-  m_TagString: Untagged
+  m_Name: Node (11)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2318,7 +2336,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &820598010
 MonoBehaviour:
@@ -2346,7 +2364,7 @@ GameObject:
   - component: {fileID: 934852173}
   - component: {fileID: 934852172}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: SpawnNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2426,7 +2444,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 3
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979240308
 GameObject:
@@ -2442,8 +2460,8 @@ GameObject:
   - component: {fileID: 979240309}
   - component: {fileID: 979240313}
   m_Layer: 0
-  m_Name: Cube (24)
-  m_TagString: Untagged
+  m_Name: Node (26)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2522,7 +2540,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &979240313
 MonoBehaviour:
@@ -2647,8 +2665,8 @@ GameObject:
   - component: {fileID: 1041618053}
   - component: {fileID: 1041618057}
   m_Layer: 0
-  m_Name: Cube (18)
-  m_TagString: Untagged
+  m_Name: Node (18)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2727,7 +2745,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1041618057
 MonoBehaviour:
@@ -2756,8 +2774,8 @@ GameObject:
   - component: {fileID: 1045981116}
   - component: {fileID: 1045981120}
   m_Layer: 0
-  m_Name: Cube (20)
-  m_TagString: Untagged
+  m_Name: Node (21)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2865,8 +2883,8 @@ GameObject:
   - component: {fileID: 1125682613}
   - component: {fileID: 1125682617}
   m_Layer: 0
-  m_Name: Cube (25)
-  m_TagString: Untagged
+  m_Name: Node (27)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2945,7 +2963,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1125682617
 MonoBehaviour:
@@ -2974,8 +2992,8 @@ GameObject:
   - component: {fileID: 1129047758}
   - component: {fileID: 1129047762}
   m_Layer: 0
-  m_Name: Cube (17)
-  m_TagString: Untagged
+  m_Name: Node (17)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3054,7 +3072,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1129047762
 MonoBehaviour:
@@ -3113,8 +3131,8 @@ GameObject:
   - component: {fileID: 1201234986}
   - component: {fileID: 1201234990}
   m_Layer: 0
-  m_Name: Cube (27)
-  m_TagString: Untagged
+  m_Name: Node (29)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3193,7 +3211,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1201234990
 MonoBehaviour:
@@ -3352,7 +3370,7 @@ GameObject:
   - component: {fileID: 1320248741}
   - component: {fileID: 1320248740}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SpawnNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3432,7 +3450,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 0
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430689693
 GameObject:
@@ -3448,8 +3466,8 @@ GameObject:
   - component: {fileID: 1430689694}
   - component: {fileID: 1430689698}
   m_Layer: 0
-  m_Name: Cube (30)
-  m_TagString: Untagged
+  m_Name: Node (33)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3528,7 +3546,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 30
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1430689698
 MonoBehaviour:
@@ -3587,8 +3605,8 @@ GameObject:
   - component: {fileID: 1451432667}
   - component: {fileID: 1451432671}
   m_Layer: 0
-  m_Name: Cube (19)
-  m_TagString: Untagged
+  m_Name: Node (19)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3667,7 +3685,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1451432671
 MonoBehaviour:
@@ -3696,8 +3714,8 @@ GameObject:
   - component: {fileID: 1573332438}
   - component: {fileID: 1573332437}
   m_Layer: 0
-  m_Name: Cube (36)
-  m_TagString: Untagged
+  m_Name: Node (20)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3714,7 +3732,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 36
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1573332437
 MonoBehaviour:
@@ -3805,8 +3823,8 @@ GameObject:
   - component: {fileID: 1578643314}
   - component: {fileID: 1578643318}
   m_Layer: 0
-  m_Name: Cube (28)
-  m_TagString: Untagged
+  m_Name: Node (31)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3885,7 +3903,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 28
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1578643318
 MonoBehaviour:
@@ -3913,7 +3931,7 @@ GameObject:
   - component: {fileID: 1628834301}
   - component: {fileID: 1628834300}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: SpawnNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3993,7 +4011,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 2
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638753084
 GameObject:
@@ -4099,8 +4117,8 @@ GameObject:
   - component: {fileID: 1667319483}
   - component: {fileID: 1667319487}
   m_Layer: 0
-  m_Name: Cube (13)
-  m_TagString: Untagged
+  m_Name: Node (12)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4179,7 +4197,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1667319487
 MonoBehaviour:
@@ -4207,7 +4225,7 @@ GameObject:
   - component: {fileID: 1677330866}
   - component: {fileID: 1677330865}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: SpawnNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4287,7 +4305,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 1
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1762197367
 GameObject:
@@ -4347,8 +4365,8 @@ GameObject:
   - component: {fileID: 1787274008}
   - component: {fileID: 1787274012}
   m_Layer: 0
-  m_Name: Cube (15)
-  m_TagString: Untagged
+  m_Name: Node (14)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4427,7 +4445,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1787274012
 MonoBehaviour:
@@ -4456,8 +4474,8 @@ GameObject:
   - component: {fileID: 1831560072}
   - component: {fileID: 1831560071}
   m_Layer: 0
-  m_Name: Cube (37)
-  m_TagString: Untagged
+  m_Name: Node (25)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4474,7 +4492,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 37
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1831560071
 MonoBehaviour:
@@ -4565,8 +4583,8 @@ GameObject:
   - component: {fileID: 1895810603}
   - component: {fileID: 1895810607}
   m_Layer: 0
-  m_Name: Cube (14)
-  m_TagString: Untagged
+  m_Name: Node (13)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4645,7 +4663,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1895810607
 MonoBehaviour:
@@ -4674,8 +4692,8 @@ GameObject:
   - component: {fileID: 1950469668}
   - component: {fileID: 1950469672}
   m_Layer: 0
-  m_Name: Cube (4)
-  m_TagString: Untagged
+  m_Name: Node
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4754,7 +4772,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1950469672
 MonoBehaviour:
@@ -4813,8 +4831,8 @@ GameObject:
   - component: {fileID: 2002683469}
   - component: {fileID: 2002683473}
   m_Layer: 0
-  m_Name: Cube (8)
-  m_TagString: Untagged
+  m_Name: Node (6)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4893,7 +4911,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2002683473
 MonoBehaviour:
@@ -5001,8 +5019,8 @@ GameObject:
   - component: {fileID: 2021364273}
   - component: {fileID: 2021364277}
   m_Layer: 0
-  m_Name: Cube (16)
-  m_TagString: Untagged
+  m_Name: Node (16)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5081,7 +5099,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2021364277
 MonoBehaviour:
@@ -5110,8 +5128,8 @@ GameObject:
   - component: {fileID: 2033109331}
   - component: {fileID: 2033109335}
   m_Layer: 0
-  m_Name: Cube (6)
-  m_TagString: Untagged
+  m_Name: Node (3)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5190,7 +5208,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2033109335
 MonoBehaviour:
@@ -5219,8 +5237,8 @@ GameObject:
   - component: {fileID: 2049931745}
   - component: {fileID: 2049931749}
   m_Layer: 0
-  m_Name: Cube (26)
-  m_TagString: Untagged
+  m_Name: Node (28)
+  m_TagString: CargoNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5299,7 +5317,7 @@ Transform:
   m_LocalScale: {x: 6.536361, y: 0.30478, z: 2.7990625}
   m_Children: []
   m_Father: {fileID: 453305370}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2049931749
 MonoBehaviour:
@@ -5502,15 +5520,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8700056482946093682, guid: 5f4cda91a86e67541b22b3e4938603a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8700056482946093682, guid: 5f4cda91a86e67541b22b3e4938603a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.94
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8700056482946093682, guid: 5f4cda91a86e67541b22b3e4938603a8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.7
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8700056482946093682, guid: 5f4cda91a86e67541b22b3e4938603a8, type: 3}
       propertyPath: m_LocalRotation.w
