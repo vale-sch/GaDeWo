@@ -110,3 +110,8 @@ Bastian hat das Raumschiff mit 3DS Max nachgebaut und noch einen neuen optischen
 Thema MiniGames: User eignet sich im Laufe des Spiels verschiedene Skills (z.B. Energiemanagement) an und kann diese benutzen um gewisse Probleme (Quests) auf dem Schiff zu lösen.
 
 Beispiel: Kaputter Frachter muss mit Traktorstrahl an Bord geholt werden und dann per Kran im Hangar/Frachtraum sortiert werden.
+
+15.11.
+
+Story: User (KI) – zu Beginn Kaffeemaschine
+Nach und nach fallen Syteme des Schiffes aus und User wird gezwungen das Schiff (welches er noch erkunden und überhaupt begreifen muss, dass er sich auf einem Raumschiff befindet) bzw. Systeme des Schiffes zu steuern und Quests zu lösen.
