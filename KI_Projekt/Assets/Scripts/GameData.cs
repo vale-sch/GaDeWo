@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GameData
 {
-    public static float energy = 80;
+    public static float energy;
     public static float maxEnergy = 200;
     public static float weaponEnergy;
     public static float navigationEnergy;
@@ -30,7 +30,6 @@ public static class GameData
         navigationEnergy = 0;
         shieldEnergy = 0;
         sensorEnergy = 0;
-
     }
 
     public static void SaveContainer(int prefabNumber, Vector3 position, Quaternion rotation, bool hasContainer, string name)
