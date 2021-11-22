@@ -2698,7 +2698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f5d60ba9637eb4dadeb7138f80dde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneToLoad: 
+  gameSceneToLoad: miniGameB
 --- !u!1 &1297519069
 GameObject:
   m_ObjectHideFlags: 0
