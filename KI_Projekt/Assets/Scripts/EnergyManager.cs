@@ -1,20 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnergyManager : MonoBehaviour
-{
+public class EnergyManager : MonoBehaviour {
 
     public Image energyBar;
     public GameObject energyBarUI;
 
 
-    private void Update()
-    {
+    private void Update() {
         energyBar.fillAmount = GameData.energy / GameData.maxEnergy;
     }
 
-    public void ToggleEnergyUI()
-    {
+    public void ToggleEnergyUI() {
         energyBarUI.SetActive(!energyBarUI.activeSelf);
     }
 }

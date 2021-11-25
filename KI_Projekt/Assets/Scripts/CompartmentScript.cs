@@ -2,30 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class CompartmentScript : MonoBehaviour
-{
+public class CompartmentScript : MonoBehaviour {
     public string gameSceneToLoad;
     private Color c;
     private Color cA;
-    void Awake()
-    {
+    void Awake() {
         c = this.gameObject.GetComponent<MeshRenderer>().material.color;
         cA = c;
         cA.a = 1;
     }
 
-    void OnMouseDown()
-    {
+    void OnMouseDown() {
         SceneManager.LoadScene(gameSceneToLoad);
     }
-    void OnMouseOver()
-    {
+    void OnMouseOver() {
 
         this.gameObject.GetComponent<MeshRenderer>().material.color = cA;
 
     }
-    void OnMouseExit()
-    {
+    void OnMouseExit() {
         this.gameObject.GetComponent<MeshRenderer>().material.color = c;
     }
 }

@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContainerSpawner : MonoBehaviour
-{
+public class ContainerSpawner : MonoBehaviour {
     public GameObject[] containerPrefab;
     public Transform[] spawnPoints;
-    void Start()
-    {
+    void Start() {
         StartCoroutine(spawnContainers());
     }
 
-    IEnumerator spawnContainers()
-    {
+    IEnumerator spawnContainers() {
         float randomTime = Random.Range(4f, 8f);
 
         yield return new WaitForSeconds(randomTime);
@@ -26,8 +23,7 @@ public class ContainerSpawner : MonoBehaviour
         StartCoroutine(spawnContainers());
     }
 
-    IEnumerator SaveContainer(GameObject container, int prefabNumber)
-    {
+    IEnumerator SaveContainer(GameObject container, int prefabNumber) {
         yield return new WaitForSeconds(3);
         GameData.SaveContainer(prefabNumber, container.transform.position, container.transform.rotation, false, container.name);
     }

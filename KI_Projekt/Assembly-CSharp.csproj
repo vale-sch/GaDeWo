@@ -43,18 +43,17 @@
      <Compile Include="Assets\Scripts\Cargo Minigame\NodeGrid.cs" />
      <Compile Include="Assets\Scripts\CompartmentScript.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerSpawner.cs" />
+     <Compile Include="Assets\Scripts\ShootingGame\ThreatController.cs" />
+     <Compile Include="Assets\Scripts\ShootingGame\SpawnThreats.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\ShootingGame\SpaceShipShooter.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\Container.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\GridControl.cs" />
-     <Compile Include="Assets\Scripts\GameData.cs" />
-     <Compile Include="Assets\Scripts\EnergyBar.cs" />
-     <Compile Include="Assets\Scripts\ShootingGame\ProcedualEnviromentMaker.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\BackgroundManager.cs" />
-     <Compile Include="Assets\Scripts\ShootingGame\SpaceShipShooter.cs" />
+     <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\BulletScript.cs" />
-     <Compile Include="Assets\Scripts\ShootingGame\SpawnThreats.cs" />
-     <Compile Include="Assets\Scripts\ShootingGame\ThreadController.cs" />
+     <Compile Include="Assets\Scripts\EnergyBar.cs" />
     <Reference Include="UnityEngine">
         <HintPath>E:/Programs/unityEditors/2020.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
