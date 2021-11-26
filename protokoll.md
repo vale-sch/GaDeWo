@@ -98,7 +98,6 @@ Objekte die User benutzen kann:
 -   Laser/Traktorstrahl
 -   Schilde (Ausrichtung und Aktivierung)
 
-
 13.11.2021
 
 Lead Artist und Game Designer: Bastian  --> Montag Schiffsprtotypen mitbringen um sie topdown als Prototyp nutzen zu können, sowie Sonderinteraktionen in Mini-Games. Scribbles/Sketches für Mini-Games bzw. Quests und Mood Board
