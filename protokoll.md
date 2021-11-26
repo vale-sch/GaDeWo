@@ -116,7 +116,6 @@ Beispiel: Kaputter Frachter muss mit Traktorstrahl an Bord geholt werden und dan
 Story: User (KI) – zu Beginn Kaffeemaschine
 Nach und nach fallen Syteme des Schiffes aus und User wird gezwungen das Schiff (welches er noch erkunden und überhaupt begreifen muss, dass er sich auf einem Raumschiff befindet) bzw. Systeme des Schiffes zu steuern und Quests zu lösen.
 
-
 17.11.
 
 Humordialoge der im Laufe des Spiels immer weiter verdummenden Crew sollen mit in die Story aufgenommen werden.
