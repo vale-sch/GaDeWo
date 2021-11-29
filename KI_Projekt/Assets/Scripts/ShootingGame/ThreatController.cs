@@ -14,14 +14,16 @@ public class ThreatController : MonoBehaviour {
 
     }
     IEnumerator DestroyMySelf() {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(6f);
         if (this.gameObject)
             Destroy(this.gameObject);
     }
     void OnTriggerEnter(Collider spaceObject) {
         if (spaceObject.GetComponent<BulletScript>())
-            if (this.gameObject)
+            if (this.gameObject) {
+                Destroy(spaceObject.gameObject);
                 Destroy(this.gameObject);
+            }
         if (spaceObject.GetComponent<SpaceShipShooter>())
             if (this.gameObject) {
                 Destroy(spaceObject.transform.root.gameObject);
