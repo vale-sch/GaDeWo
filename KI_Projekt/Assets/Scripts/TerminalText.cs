@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TerminalText : MonoBehaviour {
-    //public static TerminalText instance; // static bool isNextTextReady
+    public VolumeRealtimeEdit volumeRealtimeEdit;
     [SerializeField] private TextWriter textWriter;
     public Text terminalText;
     public static bool isNextTextReady = true;
@@ -12,14 +12,7 @@ public class TerminalText : MonoBehaviour {
     private string textWritten;
     private int arrIndex;
 
-    /* private void Awake() {
-        if (instance != null) {
-            Debug.LogError("More than one TerminalText in scene!");
-            return;
-        }
-        instance = this;
-    }
- */
+
 
     private void Start() {
         for (int i = 0; i <= textArr.Length - 1; i++) {
@@ -38,7 +31,10 @@ public class TerminalText : MonoBehaviour {
     }
 
     private void Update() {
-        if (arrIndex > textArr.Length - 1) return;
+        if (arrIndex > textArr.Length - 1) {
+            StartCoroutine(DisableMyself());
+            return;
+        }
         if (isNextTextReady) {
             if (arrIndex < 5) StartCoroutine(WriteText(textArr[arrIndex], 1));
             else StartCoroutine(WriteText(textArr[arrIndex], 0));
@@ -51,5 +47,10 @@ public class TerminalText : MonoBehaviour {
         textWriter.AddWriter(terminalText, text, 0.08f, true, textWritten);
         if (arrIndex <= textArr.Length - 1) textWritten += textArr[arrIndex];
         arrIndex++;
+    }
+    IEnumerator DisableMyself() {
+        yield return new WaitForSeconds(3f);
+        this.gameObject.SetActive(!this.gameObject.activeSelf);
+        volumeRealtimeEdit.enabled = true;
     }
 }

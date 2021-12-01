@@ -37,25 +37,31 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Cargo Minigame\GrabberController.cs" />
-     <Compile Include="Assets\Scripts\Cargo Minigame\ContainerColl.cs" />
-     <Compile Include="Assets\Scripts\EnergyManager.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\GridControlContainer.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\NodeGrid.cs" />
-     <Compile Include="Assets\Scripts\CompartmentScript.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerSpawner.cs" />
+     <Compile Include="Assets\Scripts\startScene\VolumeRealtimeEdit.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\ThreatController.cs" />
-     <Compile Include="Assets\Scripts\TextWriter.cs" />
-     <Compile Include="Assets\Scripts\ShootingGame\SpawnThreats.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\SpaceShipShooter.cs" />
-     <Compile Include="Assets\Scripts\Cargo Minigame\Container.cs" />
-     <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\GridControl.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\BackgroundManager.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
-     <Compile Include="Assets\Scripts\ShootingGame\BulletScript.cs" />
      <Compile Include="Assets\Scripts\TerminalText.cs" />
      <Compile Include="Assets\Scripts\EnergyBar.cs" />
+     <Compile Include="Assets\Scripts\Cargo Minigame\ContainerColl.cs" />
+     <Compile Include="Assets\Scripts\EnergyManager.cs" />
+     <Compile Include="Assets\Scripts\CompartmentScript.cs" />
+     <Compile Include="Assets\Scripts\TextWriter.cs" />
+     <Compile Include="Assets\Scripts\ShootingGame\SpawnThreats.cs" />
+     <Compile Include="Assets\Scripts\Cargo Minigame\Container.cs" />
+     <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\ShootingGame\BulletScript.cs" />
+     <Compile Include="Assets\Scripts\startScene\CafeCameraController.cs" />
+     <Compile Include="Assets\Scripts\startScene\CafeArmController.cs" />
+     <Compile Include="Assets\Scripts\startScene\MaybePhysical.cs" />
+     <Compile Include="Assets\Scripts\startScene\WalkBehaviour.cs" />
+     <Compile Include="Assets\SpawnWalkers.cs" />
      <None Include="Assets\Fonts\OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>E:/Programs/unityEditors/2020.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -624,8 +630,20 @@
     <Reference Include="System.Xml.Serialization">
         <HintPath>E:/Programs/unityEditors/2020.3.7f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -633,14 +651,29 @@
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline.Editor">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -648,8 +681,17 @@
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+        <HintPath>C:/Users/valiv/Semester 5/Gamedesign Workshop/GaDeWo/KI_Projekt/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
