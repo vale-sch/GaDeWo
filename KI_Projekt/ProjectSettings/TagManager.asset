@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CargoNode
+  - Container
+  - TransferNode
   layers:
   - Default
   - TransparentFX

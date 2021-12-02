@@ -1,31 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ContainerSpawner : MonoBehaviour {
     public GameObject[] containerPrefab;
-    public Transform[] spawnPoints;
-    void Start() {
-        StartCoroutine(spawnContainers());
+    public Transform spawnPoint;
+    private float countdown = 5f;
+
+    private void Update() {
+        if (transform.childCount > 1) return;
+        if (countdown <= 0f) {
+            SpawnContainer();
+            countdown = Random.Range(4f, 8f);
+            return;
+        }
+        countdown -= Time.deltaTime;
     }
 
-    IEnumerator spawnContainers() {
-        float randomTime = Random.Range(4f, 8f);
-
-        yield return new WaitForSeconds(randomTime);
-        int randomNumSpawnPoint = Random.Range(0, 5);
-        int randomNumPrefab = Random.Range(0, 5);
-
-        GameObject instContainer = Instantiate(containerPrefab[randomNumPrefab], spawnPoints[randomNumSpawnPoint].position, Quaternion.identity);
-        instContainer.name = "Container" + GameData.containersInGame;
-        StartCoroutine(SaveContainer(instContainer, randomNumPrefab));
-
-        StartCoroutine(spawnContainers());
+    private void SpawnContainer() {
+        GameObject instContainer = Instantiate(containerPrefab[GetPrefabWithProbability()], spawnPoint.position, Quaternion.identity);
+        instContainer.GetComponent<CargoContainer>().department = (Department)Random.Range(1, 5);
+        instContainer.transform.parent = transform;
     }
 
-    IEnumerator SaveContainer(GameObject container, int prefabNumber) {
-        yield return new WaitForSeconds(3);
-        GameData.SaveContainer(prefabNumber, container.transform.position, container.transform.rotation, false, container.name);
+    private int GetPrefabWithProbability() {
+        float random = Random.value;
+        if (random < 0.15f) return 0;
+        if (random > 0.9f) return 2;
+        return 1;
     }
-
 }

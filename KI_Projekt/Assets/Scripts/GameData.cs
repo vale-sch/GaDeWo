@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Department { NONE, BRIDGE, FIGHTING, ENGINEERING, CREW, LOGISTICS }
 public static class GameData {
     public static float energy;
     public static float maxEnergy = 200;
@@ -13,37 +14,27 @@ public static class GameData {
     public static float progress;
 
     //Cargo Minigame
-    public static List<Container> containers = new List<Container>();
-    public static int containersInGame = 0;
-    public static bool[] nodeHasContainer = new bool[35];
+    public static Container[][] grid;
+    public static bool cargoIsInitialized;
+    public static int bridgeSupplies;
+    public static int fightingSupplies;
+    public static int engineeringSupplies;
+    public static int crewSupplies;
+    public static int logisticsSupplies;
 
     static GameData() {
-        for (int i = 0; i < nodeHasContainer.Length; i++) {
-            nodeHasContainer[i] = false;
-        }
-
         energy = maxEnergy;
         weaponEnergy = 0;
         navigationEnergy = 0;
         shieldEnergy = 0;
         sensorEnergy = 0;
-    }
 
-    public static void SaveContainer(int prefabNumber, Vector3 position, Quaternion rotation, bool hasContainer, string name) {
-        Container newContainer = new Container(prefabNumber, position, rotation, hasContainer, name);
-        containers.Add(newContainer);
-        containersInGame++;
-        //Debug.Log("Container added. Containers in game: " + containersInGame);
-    }
+        cargoIsInitialized = false;
 
-    public static void DeleteContainer(GameObject _container) {
-        foreach (Container container in containers) {
-            if (container.name == _container.name) containers.Remove(container);
-        }
+        bridgeSupplies = 0;
+        fightingSupplies = 0;
+        engineeringSupplies = 0;
+        crewSupplies = 0;
+        logisticsSupplies = 0;
     }
-
-    public static void SaveNodeStatus(int position, bool value) {
-        nodeHasContainer[position] = value;
-    }
-
 }
