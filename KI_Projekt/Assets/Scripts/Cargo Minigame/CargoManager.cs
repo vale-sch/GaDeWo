@@ -20,13 +20,16 @@ public class CargoManager : MonoBehaviour {
     }
 
     private void LoadSceneStatus() {
+        int nodeIndex = 0;
         foreach (Container[] node in GameData.grid) {
             foreach (Container container in node) {
                 GameObject newContainer = Instantiate(containerPrefabs[(int)container.size], container.position, container.rotation);
+                newContainer.transform.SetParent(transform.GetChild(nodeIndex));
                 newContainer.GetComponent<CargoContainer>().department = container.department;
                 newContainer.GetComponent<CargoContainer>().isRevealed = container.isRevealed;
                 if (container.isRevealed) newContainer.GetComponent<CargoContainer>().SetColor();
             }
+            nodeIndex++;
         }
     }
 
