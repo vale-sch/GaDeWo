@@ -3754,7 +3754,9 @@ MonoBehaviour:
     W, A, S, D -> Control Crane
 
     Space -> Grab/Release
-    Container'
+    Container
+
+    Mouseclick -> Scan Container'
 --- !u!222 &1638753087
 CanvasRenderer:
   m_ObjectHideFlags: 0

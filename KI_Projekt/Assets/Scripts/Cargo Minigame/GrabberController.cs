@@ -17,14 +17,23 @@ public class GrabberController : MonoBehaviour {
     public Color greenGrabHelper;
     private GameObject container;
     private GameObject releaseHitObject = null;
+    private RaycastHit hit;
+    private float nextRaycastTime = 0;
+    private float period = 1 / 3;
+    private Vector3 targetPosition;
+    private bool moveToTarget = false;
 
     private void Start() {
         grabRend = grabHelper.GetComponent<Renderer>();
         redGrabHelper = grabRend.material.color;
+        CastRay();
     }
 
     private void Update() {
-        if (ContainerUI.uiActive) return;
+        if (moveToTarget) {
+            MoveToTarget();
+            return;
+        }
         if (isGrabbing) {
             Grab();
             return;
@@ -33,7 +42,7 @@ public class GrabberController : MonoBehaviour {
             Release();
             return;
         }
-        CheckMovementInput();
+        if (!ContainerUI.uiActive) CheckMovementInput();
         if (hasGrabbed) {
             CheckRelease();
             return;
@@ -43,25 +52,36 @@ public class GrabberController : MonoBehaviour {
 
     private void CheckMovementInput() {
         if (Input.GetKey(KeyCode.W)) {
-            if (transform.position.z < maxZ) transform.parent.transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+            if (transform.position.z < maxZ) transform.parent.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
         }
         if (Input.GetKey(KeyCode.S)) {
-            if (transform.position.z > minZ) transform.parent.transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+            if (transform.position.z > minZ) transform.parent.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
         }
         if (Input.GetKey(KeyCode.D)) {
-            if (transform.position.x < maxX) transform.parent.transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
+            if (transform.position.x < maxX) transform.parent.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
         }
         if (Input.GetKey(KeyCode.A)) {
-            if (transform.position.x > minX) transform.parent.transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+            if (transform.position.x > minX) transform.parent.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
         }
     }
 
+    private void MoveToTarget() {
+        if (Vector3.Distance(transform.parent.position, targetPosition) > 0.05f) {
+            transform.parent.position = Vector3.MoveTowards(transform.parent.transform.position, targetPosition, Time.deltaTime * panSpeed);
+            return;
+        }
+        transform.parent.position = targetPosition;
+        moveToTarget = false;
+    }
+
     private void CheckGrab() {
-        GameObject hitObject = GetRaycastHit().collider.gameObject;
+        CastRayPeriodically();
+        GameObject hitObject = hit.collider.gameObject;
         if (hitObject.GetComponent<CargoContainer>()) {
             grabRend.material.color = greenGrabHelper;
             if (Input.GetKey(KeyCode.Space)) {
-                transform.parent.position = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
+                targetPosition = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
+                moveToTarget = true;
                 isGrabbing = true;
             }
             return;
@@ -71,11 +91,11 @@ public class GrabberController : MonoBehaviour {
 
     private void Grab() {
         if (!hasGrabbed) {
-            transform.parent.transform.Translate(Vector3.down * 5 * Time.deltaTime, Space.World);
+            transform.parent.Translate(Vector3.down * 5 * Time.deltaTime, Space.World);
             return;
         }
         if (transform.parent.position.y < maxY) {
-            transform.parent.transform.Translate(Vector3.up * 5 * Time.deltaTime, Space.World);
+            transform.parent.Translate(Vector3.up * 5 * Time.deltaTime, Space.World);
             return;
         }
         grabRend.material.color = redGrabHelper;
@@ -83,12 +103,13 @@ public class GrabberController : MonoBehaviour {
     }
 
     private void CheckRelease() {
-        GameObject hitObject = GetRaycastHit().collider.gameObject;
-
+        CastRayPeriodically();
+        GameObject hitObject = hit.collider.gameObject;
         if ((hitObject.GetComponent<CargoNode>() || hitObject.GetComponent<CargoContainer>() && hitObject.transform.parent.GetComponent<CargoNode>() && hitObject.transform.parent.transform.childCount < 3) && AssertSize(hitObject)) {
             grabRend.material.color = greenGrabHelper;
             if (Input.GetKey(KeyCode.Space)) {
-                transform.parent.position = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
+                targetPosition = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
+                moveToTarget = true;
                 isReleasing = true;
             }
             return;
@@ -96,7 +117,8 @@ public class GrabberController : MonoBehaviour {
         if (hitObject.GetComponent<TransferNode>() && AssertDepartment(hitObject)) {
             grabRend.material.color = greenGrabHelper;
             if (Input.GetKey(KeyCode.Space)) {
-                transform.parent.position = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
+                targetPosition = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
+                moveToTarget = true;
                 isReleasing = true;
                 StartCoroutine(ProcessSupplies(hitObject));
             }
@@ -115,14 +137,14 @@ public class GrabberController : MonoBehaviour {
     }
 
     private void Release() {
-        if (releaseHitObject == null) releaseHitObject = GetRaycastHit().collider.gameObject;
+        if (releaseHitObject == null) releaseHitObject = hit.collider.gameObject;
         if (hasGrabbed) {
             container.GetComponent<Collider>().enabled = true;
 
             CargoContainer cargoContainer = container.GetComponent<CargoContainer>();
             cargoContainer.isOnTriggerEnter = true;
             if (!cargoContainer.hasTriggered) {
-                transform.parent.transform.Translate(Vector3.down * 5 * Time.deltaTime, Space.World);
+                transform.parent.Translate(Vector3.down * 5 * Time.deltaTime, Space.World);
                 return;
             }
             cargoContainer.isOnTriggerEnter = false;
@@ -134,7 +156,7 @@ public class GrabberController : MonoBehaviour {
             container = null;
         }
         if (transform.parent.position.y < maxY) {
-            transform.parent.transform.Translate(Vector3.up * 5 * Time.deltaTime, Space.World);
+            transform.parent.Translate(Vector3.up * 5 * Time.deltaTime, Space.World);
             return;
         }
         releaseHitObject = null;
@@ -142,24 +164,22 @@ public class GrabberController : MonoBehaviour {
         grabRend.material.color = redGrabHelper;
     }
 
-    IEnumerator releaseGrabDelay() {
-        GameObject oldContainer = container;
-
-        yield return new WaitForSeconds(0.5f);
-        //oldContainer.GetComponent<Rigidbody>().isKinematic = false;
+    private void CastRayPeriodically() {
+        if (Time.time > nextRaycastTime) {
+            nextRaycastTime += period;
+            Ray downRay = new Ray(transform.position, Vector3.down);
+            Physics.Raycast(downRay, out hit);
+        }
     }
 
-    private RaycastHit GetRaycastHit() {
-        RaycastHit hit;
+    private void CastRay() {
         Ray downRay = new Ray(transform.position, Vector3.down);
         Physics.Raycast(downRay, out hit);
-        return hit;
     }
 
     void OnTriggerEnter(Collider _container) {
         if (_container.GetComponent<CargoContainer>() && !hasGrabbed) {
             hasGrabbed = true;
-            //_container.transform.GetComponent<Rigidbody>().isKinematic = true;
             _container.enabled = false;
             _container.transform.SetParent(transform.parent);
             container = _container.gameObject;
@@ -168,7 +188,7 @@ public class GrabberController : MonoBehaviour {
 
     private bool AssertSize(GameObject objectToCompare) {
         ContainerSize objectSize;
-        if (objectToCompare.GetComponent<CargoNode>() || objectToCompare.GetComponent<TransferNode>()) objectSize = objectToCompare.GetComponent<CargoNode>().size;
+        if (objectToCompare.GetComponent<CargoNode>()) objectSize = objectToCompare.GetComponent<CargoNode>().size;
         else objectSize = objectToCompare.GetComponent<CargoContainer>().size;
         ContainerSize containerSize = container.GetComponent<CargoContainer>().size;
 
