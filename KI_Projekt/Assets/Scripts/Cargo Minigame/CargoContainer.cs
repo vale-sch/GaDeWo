@@ -16,7 +16,7 @@ public class CargoContainer : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider) {
         if (!isOnTriggerEnter) return;
-        if (collider.tag == "Container" || collider.tag == "CargoNode" || collider.tag == "TransferNode") hasTriggered = true;
+        if (collider.GetComponent<CargoContainer>() || collider.GetComponent<CargoNode>() || collider.GetComponent<TransferNode>()) hasTriggered = true;
     }
 
     private void OnMouseDown() {

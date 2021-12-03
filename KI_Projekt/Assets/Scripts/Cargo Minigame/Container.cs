@@ -4,7 +4,6 @@ public class Container {
     public ContainerSize size;
     public Department department;
     public bool isRevealed = false;
-    public Transform transform;
     public Vector3 position;
     public Quaternion rotation;
 

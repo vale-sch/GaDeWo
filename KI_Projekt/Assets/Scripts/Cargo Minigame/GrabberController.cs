@@ -16,7 +16,6 @@ public class GrabberController : MonoBehaviour {
     private Color redGrabHelper;
     public Color greenGrabHelper;
     private GameObject container;
-    private RaycastHit ray;
     private GameObject releaseHitObject = null;
 
     private void Start() {
@@ -59,7 +58,7 @@ public class GrabberController : MonoBehaviour {
 
     private void CheckGrab() {
         GameObject hitObject = GetRaycastHit().collider.gameObject;
-        if (hitObject.tag == "Container") {
+        if (hitObject.GetComponent<CargoContainer>()) {
             grabRend.material.color = greenGrabHelper;
             if (Input.GetKey(KeyCode.Space)) {
                 transform.parent.position = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
@@ -86,7 +85,7 @@ public class GrabberController : MonoBehaviour {
     private void CheckRelease() {
         GameObject hitObject = GetRaycastHit().collider.gameObject;
 
-        if ((hitObject.tag == "CargoNode" || hitObject.tag == "Container" && hitObject.transform.parent.tag == "CargoNode" && hitObject.transform.parent.transform.childCount < 3) && AssertSize(hitObject)) {
+        if ((hitObject.GetComponent<CargoNode>() || hitObject.GetComponent<CargoContainer>() && hitObject.transform.parent.GetComponent<CargoNode>() && hitObject.transform.parent.transform.childCount < 3) && AssertSize(hitObject)) {
             grabRend.material.color = greenGrabHelper;
             if (Input.GetKey(KeyCode.Space)) {
                 transform.parent.position = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
@@ -94,7 +93,7 @@ public class GrabberController : MonoBehaviour {
             }
             return;
         }
-        if (hitObject.tag == "TransferNode" && AssertDepartment(hitObject)) {
+        if (hitObject.GetComponent<TransferNode>() && AssertDepartment(hitObject)) {
             grabRend.material.color = greenGrabHelper;
             if (Input.GetKey(KeyCode.Space)) {
                 transform.parent.position = new Vector3(hitObject.transform.position.x, transform.parent.position.y, hitObject.transform.position.z);
@@ -130,9 +129,9 @@ public class GrabberController : MonoBehaviour {
             cargoContainer.hasTriggered = false;
             hasGrabbed = false;
 
-            if (releaseHitObject.tag == "Container") releaseHitObject = releaseHitObject.transform.parent.gameObject;
+            if (releaseHitObject.GetComponent<CargoContainer>()) releaseHitObject = releaseHitObject.transform.parent.gameObject;
             container.transform.parent = releaseHitObject.transform;
-            StartCoroutine(releaseGrabDelay());
+            container = null;
         }
         if (transform.parent.position.y < maxY) {
             transform.parent.transform.Translate(Vector3.up * 5 * Time.deltaTime, Space.World);
@@ -145,9 +144,9 @@ public class GrabberController : MonoBehaviour {
 
     IEnumerator releaseGrabDelay() {
         GameObject oldContainer = container;
-        container = null;
+
         yield return new WaitForSeconds(0.5f);
-        oldContainer.GetComponent<Rigidbody>().isKinematic = false;
+        //oldContainer.GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private RaycastHit GetRaycastHit() {
@@ -158,9 +157,9 @@ public class GrabberController : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider _container) {
-        if (_container.tag == "Container" && !hasGrabbed) {
+        if (_container.GetComponent<CargoContainer>() && !hasGrabbed) {
             hasGrabbed = true;
-            _container.transform.GetComponent<Rigidbody>().isKinematic = true;
+            //_container.transform.GetComponent<Rigidbody>().isKinematic = true;
             _container.enabled = false;
             _container.transform.SetParent(transform.parent);
             container = _container.gameObject;
@@ -169,7 +168,7 @@ public class GrabberController : MonoBehaviour {
 
     private bool AssertSize(GameObject objectToCompare) {
         ContainerSize objectSize;
-        if (objectToCompare.tag == "CargoNode" || objectToCompare.tag == "TransferNode") objectSize = objectToCompare.GetComponent<CargoNode>().size;
+        if (objectToCompare.GetComponent<CargoNode>() || objectToCompare.GetComponent<TransferNode>()) objectSize = objectToCompare.GetComponent<CargoNode>().size;
         else objectSize = objectToCompare.GetComponent<CargoContainer>().size;
         ContainerSize containerSize = container.GetComponent<CargoContainer>().size;
 

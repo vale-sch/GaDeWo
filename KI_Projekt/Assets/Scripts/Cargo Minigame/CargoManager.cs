@@ -13,7 +13,6 @@ public class CargoManager : MonoBehaviour {
         if (GameData.cargoIsInitialized) LoadSceneStatus();
     }
 
-
     public void PrepareSceneChange() {
         SaveSceneStatus();
         StartCoroutine(ChangeScene());

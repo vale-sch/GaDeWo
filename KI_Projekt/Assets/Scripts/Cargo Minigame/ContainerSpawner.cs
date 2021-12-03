@@ -17,7 +17,7 @@ public class ContainerSpawner : MonoBehaviour {
 
     private void SpawnContainer() {
         GameObject instContainer = Instantiate(containerPrefab[GetPrefabWithProbability()], spawnPoint.position, Quaternion.identity);
-        instContainer.GetComponent<CargoContainer>().department = (Department)Random.Range(1, 5);
+        instContainer.GetComponent<CargoContainer>().department = (Department)Random.Range(1, 6);
         instContainer.transform.parent = transform;
     }
 

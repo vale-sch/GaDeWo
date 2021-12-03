@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 225064527}
   m_Layer: 0
   m_Name: TransferNodeFGT
-  m_TagString: TransferNode
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1545,7 +1545,7 @@ GameObject:
   - component: {fileID: 768951830}
   m_Layer: 0
   m_Name: TransferNodeENG
-  m_TagString: TransferNode
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2383,7 +2383,7 @@ GameObject:
   - component: {fileID: 1170541552}
   m_Layer: 0
   m_Name: TransferNodeCRW
-  m_TagString: TransferNode
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2802,7 +2802,7 @@ GameObject:
   - component: {fileID: 1258823184}
   m_Layer: 0
   m_Name: TransferNodeBRG
-  m_TagString: TransferNode
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3214,15 +3214,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341381927}
-  m_LocalRotation: {x: 0.32556805, y: 0, z: 0, w: 0.9455186}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.27563733, y: 0, z: 0, w: 0.96126175}
+  m_LocalPosition: {x: 0, y: 0, z: -2.5}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children:
   - {fileID: 1458493480}
   - {fileID: 282186915}
   m_Father: {fileID: 267321112}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 38, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 32, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 3.82}
@@ -4878,7 +4878,7 @@ GameObject:
   - component: {fileID: 2078977925}
   m_Layer: 0
   m_Name: TransferNodeLOG
-  m_TagString: TransferNode
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
