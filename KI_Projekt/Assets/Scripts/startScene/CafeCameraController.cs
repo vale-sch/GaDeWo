@@ -1,9 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CafeCameraController : MonoBehaviour {
+    public SpawnWalkers spawnWalkers;
+    private bool fillAmountFull;
     void Update() {
+        if (spawnWalkers.walkerCache) {
+            transform.LookAt(spawnWalkers.walkerCache.transform, this.transform.up);
+            if (!fillAmountFull)
+                if (spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount <= 0.99)
+                    spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount += Time.deltaTime * 0.4f;
+                else {
+                    fillAmountFull = true;
+                    spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount = 0;
+                    spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().textMesh.SetActive(true);
+                }
+            else if (Input.GetKey(KeyCode.Space)) {
+                fillAmountFull = false;
+                spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().isServed = true;
+            }
+            return;
+        }
         float mouseY = Input.GetAxis("Mouse Y");
         float rotX = this.transform.rotation.eulerAngles.x;
         if (mouseY > 0 && rotX > 5 || mouseY < 0 && rotX < 20)

@@ -48,7 +48,7 @@
      <Compile Include="Assets\Scripts\ShootingGame\SpaceShipShooter.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\BackgroundManager.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
-     <Compile Include="Assets\SpawnWalkers.cs" />
+     <Compile Include="Assets\Scripts\startScene\SpawnWalkers.cs" />
      <Compile Include="Assets\Scripts\TerminalText.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\CargoContainer.cs" />
      <Compile Include="Assets\Scripts\EnergyBar.cs" />

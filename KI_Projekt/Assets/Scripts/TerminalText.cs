@@ -36,20 +36,20 @@ public class TerminalText : MonoBehaviour {
             return;
         }
         if (isNextTextReady) {
-            if (arrIndex < 5) StartCoroutine(WriteText(textArr[arrIndex], 1));
+            if (arrIndex < 5) StartCoroutine(WriteText(textArr[arrIndex], 0.2f));
             else StartCoroutine(WriteText(textArr[arrIndex], 0));
         }
     }
 
-    private IEnumerator WriteText(string text, int secondsToWait) {
+    private IEnumerator WriteText(string text, float secondsToWait) {
         isNextTextReady = false;
         yield return new WaitForSeconds(secondsToWait);
-        textWriter.AddWriter(terminalText, text, 0.08f, true, textWritten);
+        textWriter.AddWriter(terminalText, text, 0.01f, true, textWritten);
         if (arrIndex <= textArr.Length - 1) textWritten += textArr[arrIndex];
         arrIndex++;
     }
     IEnumerator DisableMyself() {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         this.gameObject.SetActive(!this.gameObject.activeSelf);
         volumeRealtimeEdit.enabled = true;
     }
