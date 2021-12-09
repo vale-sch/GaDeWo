@@ -4,7 +4,13 @@ using UnityEngine.UI;
 
 public class CafeCameraController : MonoBehaviour {
     public SpawnWalkers spawnWalkers;
+    public Text popularity;
     private bool fillAmountFull;
+    private int popularityNmb;
+    void Start() {
+        popularity.enabled = true;
+        popularity.text = "popularity: " + popularityNmb;
+    }
     void Update() {
         if (spawnWalkers.walkerCache) {
             transform.LookAt(spawnWalkers.walkerCache.transform, this.transform.up);
@@ -34,11 +40,15 @@ public class CafeCameraController : MonoBehaviour {
                 fillAmountFull = false;
                 spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().isServed = true;
                 spawnWalkers.walkerCache.GetComponent<MeshRenderer>().material.color = Color.green;
+                popularityNmb += 10;
+
             } else {
                 fillAmountFull = false;
                 spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().isServed = true;
                 spawnWalkers.walkerCache.GetComponent<MeshRenderer>().material.color = Color.red;
+                popularityNmb -= 10;
             }
+            popularity.text = "popularity: " + popularityNmb;
         }
     }
 }

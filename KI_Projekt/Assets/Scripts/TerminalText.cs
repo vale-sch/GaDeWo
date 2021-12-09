@@ -12,7 +12,7 @@ public class TerminalText : MonoBehaviour {
     private string textWritten;
     private int arrIndex;
 
-
+    private bool isDisabled;
 
     private void Start() {
         for (int i = 0; i <= textArr.Length - 1; i++) {
@@ -31,11 +31,11 @@ public class TerminalText : MonoBehaviour {
     }
 
     private void Update() {
-        if (arrIndex > textArr.Length - 1) {
+        if (arrIndex > textArr.Length - 1 && !isDisabled)
             StartCoroutine(DisableMyself());
-            return;
-        }
-        if (isNextTextReady) {
+
+
+        if (isNextTextReady && !isDisabled) {
             if (arrIndex < 5) StartCoroutine(WriteText(textArr[arrIndex], 0.2f));
             else StartCoroutine(WriteText(textArr[arrIndex], 0));
         }
@@ -49,8 +49,8 @@ public class TerminalText : MonoBehaviour {
         arrIndex++;
     }
     IEnumerator DisableMyself() {
+        isDisabled = true;
         yield return new WaitForSeconds(1f);
-
         this.gameObject.GetComponentInChildren<Image>().enabled = false;
         this.gameObject.GetComponentInChildren<Text>().enabled = false;
         this.transform.GetChild(this.transform.childCount - 1).gameObject.SetActive(true);
