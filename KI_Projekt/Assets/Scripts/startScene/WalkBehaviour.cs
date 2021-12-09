@@ -3,13 +3,16 @@ using UnityEngine.UI;
 using System;
 public class WalkBehaviour : MaybePhysical {
     public Transform[] waypoints;
+    [HideInInspector]
+    public uint waypointIndex = 0;
     public Image imageCircle;
     public GameObject textMesh;
     public string[] infoNames;
     public string[] infoAge;
     public string[] infoLoves;
+    public string infoLove;
     private string[] infosArray;
-    uint waypointIndex = 0;
+
     public float speed;
     public bool repeat;
     public bool shouldFollowWaypoints;
@@ -20,7 +23,9 @@ public class WalkBehaviour : MaybePhysical {
         for (int i = 0; i < infosArray.Length; i++) {
             infosArray[i] = infoNames[i] + "\n" + "Alter: " + infoAge[i] + "\n" + "Vorliebe: " + infoLoves[i];
         }
-        textMesh.GetComponent<TextMesh>().text = infosArray[UnityEngine.Random.Range(0, infosArray.Length)];
+        int rndNmb = UnityEngine.Random.Range(0, infosArray.Length);
+        infoLove = infoLoves[rndNmb];
+        textMesh.GetComponent<TextMesh>().text = infosArray[rndNmb];
     }
     void FixedUpdate() {
         if (shouldFollowWaypoints) {

@@ -50,7 +50,11 @@ public class TerminalText : MonoBehaviour {
     }
     IEnumerator DisableMyself() {
         yield return new WaitForSeconds(1f);
-        this.gameObject.SetActive(!this.gameObject.activeSelf);
+
+        this.gameObject.GetComponentInChildren<Image>().enabled = false;
+        this.gameObject.GetComponentInChildren<Text>().enabled = false;
+        this.transform.GetChild(this.transform.childCount - 1).gameObject.SetActive(true);
+        this.enabled = false;
         volumeRealtimeEdit.enabled = true;
     }
 }

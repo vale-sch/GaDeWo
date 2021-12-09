@@ -236,8 +236,9 @@ MonoBehaviour:
   - Cappuccino
   - Kaffee Schwarz
   - Latte Macchiato
-  - Kaffee mit Milch
-  - Kaffe Schwarz mit Zucker
+  - Milchkaffee
+  - Kaffee mit Zucker
+  infoLove: 
   speed: 2
   repeat: 0
   shouldFollowWaypoints: 1
@@ -415,7 +416,7 @@ TextMesh:
   m_Anchor: 1
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 98
+  m_FontSize: 59
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: f19f994381e067442b2f705e4b8e958c, type: 3}

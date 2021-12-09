@@ -10,16 +10,12 @@ public class CafeCameraController : MonoBehaviour {
             transform.LookAt(spawnWalkers.walkerCache.transform, this.transform.up);
             if (!fillAmountFull)
                 if (spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount <= 0.99)
-                    spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount += Time.deltaTime * 0.4f;
+                    spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount += Time.deltaTime * 0.25f;
                 else {
                     fillAmountFull = true;
                     spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount = 0;
                     spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().textMesh.SetActive(true);
                 }
-            else if (Input.GetKey(KeyCode.Space)) {
-                fillAmountFull = false;
-                spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().isServed = true;
-            }
             return;
         }
         float mouseY = Input.GetAxis("Mouse Y");
@@ -31,5 +27,18 @@ public class CafeCameraController : MonoBehaviour {
         float rotY = this.transform.rotation.eulerAngles.y;
         if (mouseX > 0 && rotY < 180 || mouseX < 0 && rotY > 100)
             transform.Rotate(new Vector3(0, mouseX * 0.75f, 0));
+    }
+    public void onButtonClick(string buttonText) {
+        if (spawnWalkers.walkerCache) {
+            if (spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().infoLove.Equals(buttonText)) {
+                fillAmountFull = false;
+                spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().isServed = true;
+                spawnWalkers.walkerCache.GetComponent<MeshRenderer>().material.color = Color.green;
+            } else {
+                fillAmountFull = false;
+                spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().isServed = true;
+                spawnWalkers.walkerCache.GetComponent<MeshRenderer>().material.color = Color.red;
+            }
+        }
     }
 }

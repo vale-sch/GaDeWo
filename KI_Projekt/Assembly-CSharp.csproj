@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\ShootingGame\BulletScript.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\CargoNode.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerUI.cs" />
+     <Compile Include="Assets\ButtonClicked.cs" />
      <None Include="Assets\Fonts\OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>E:/Programs/unityEditors/2020.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

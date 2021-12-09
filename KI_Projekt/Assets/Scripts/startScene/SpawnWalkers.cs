@@ -12,7 +12,6 @@ public class SpawnWalkers : MonoBehaviour {
     }
 
     IEnumerator spawnWalker() {
-
         walkerCache = Instantiate(walker, this.transform.position, walker.transform.rotation);
         int increment = 0;
         foreach (var waypoint in wayPoints) {
@@ -23,9 +22,22 @@ public class SpawnWalkers : MonoBehaviour {
         do {
             yield return null;
         } while (!walkerCache.GetComponent<WalkBehaviour>().isServed);
-        Destroy(walkerCache);
+        StartCoroutine(DestroyOldWalker(walkerCache));
         walkerCache = null;
-        yield return new WaitForSeconds(Random.Range(5, 10));
+        yield return new WaitForSeconds(Random.Range(4, 6));
         StartCoroutine(spawnWalker());
+    }
+    IEnumerator DestroyOldWalker(GameObject _walkerOld) {
+        int increment = 0;
+        for (int i = wayPoints.Length - 1; i >= 0; i--) {
+            _walkerOld.GetComponent<WalkBehaviour>().waypoints[increment] = wayPoints[i];
+            increment++;
+        }
+        _walkerOld.GetComponent<WalkBehaviour>().enabled = true;
+        do {
+            yield return null;
+        } while (_walkerOld.GetComponent<WalkBehaviour>().waypoints.Length - 1 != _walkerOld.GetComponent<WalkBehaviour>().waypointIndex);
+        Destroy(_walkerOld);
+
     }
 }
