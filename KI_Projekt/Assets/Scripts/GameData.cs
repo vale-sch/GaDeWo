@@ -14,7 +14,7 @@ public static class GameData {
     public static float progress;
 
     //Cargo Minigame
-    public static Container[][] grid;
+    public static Container[][] containerGrid;
     public static bool cargoIsInitialized;
     public static int bridgeSupplies;
     public static int fightingSupplies;

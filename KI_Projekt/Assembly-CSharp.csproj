@@ -56,7 +56,9 @@
      <Compile Include="Assets\Scripts\CompartmentScript.cs" />
      <Compile Include="Assets\Scripts\startScene\WalkBehaviour.cs" />
      <Compile Include="Assets\Scripts\TextWriter.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\HangarManager.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\SpawnThreats.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\ShipDrag.cs" />
      <Compile Include="Assets\Scripts\startScene\CafeArmController.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\Container.cs" />
      <Compile Include="Assets\Scripts\startScene\MaybePhysical.cs" />
@@ -65,6 +67,10 @@
      <Compile Include="Assets\Scripts\Cargo Minigame\CargoNode.cs" />
      <Compile Include="Assets\Scripts\startScene\ButtonClicked.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerUI.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\ParkingSpot.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\Ship.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\TransferSpot.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\HangarGround.cs" />
      <None Include="Assets\Fonts\OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

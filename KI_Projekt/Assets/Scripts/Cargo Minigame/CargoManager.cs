@@ -20,7 +20,7 @@ public class CargoManager : MonoBehaviour {
 
     private void LoadSceneStatus() {
         int nodeIndex = 0;
-        foreach (Container[] node in GameData.grid) {
+        foreach (Container[] node in GameData.containerGrid) {
             foreach (Container container in node) {
                 GameObject newContainer = Instantiate(containerPrefabs[(int)container.size], container.position, container.rotation);
                 newContainer.transform.SetParent(transform.GetChild(nodeIndex));
@@ -46,7 +46,7 @@ public class CargoManager : MonoBehaviour {
                 grid[child.GetSiblingIndex()][childChild.GetSiblingIndex()] = new Container(size, department, isRevealed, position, rotation);
             }
         }
-        GameData.grid = grid;
+        GameData.containerGrid = grid;
         GameData.cargoIsInitialized = true;
         sceneIsSaved = true;
     }
