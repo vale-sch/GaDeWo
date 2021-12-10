@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Cargo Minigame\GrabberController.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\ParkingSpot.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\CargoManager.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\CargoUI.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerSpawner.cs" />
@@ -46,12 +47,15 @@
      <Compile Include="Assets\Scripts\Cargo Minigame\TransferNode.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\SpaceShipShooter.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\TransferSpot.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\Ship.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\BackgroundManager.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\startScene\SpawnWalkers.cs" />
      <Compile Include="Assets\Scripts\TerminalText.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\CargoContainer.cs" />
      <Compile Include="Assets\Scripts\EnergyBar.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\HangarGround.cs" />
      <Compile Include="Assets\Scripts\EnergyManager.cs" />
      <Compile Include="Assets\Scripts\CompartmentScript.cs" />
      <Compile Include="Assets\Scripts\startScene\WalkBehaviour.cs" />
@@ -67,10 +71,8 @@
      <Compile Include="Assets\Scripts\Cargo Minigame\CargoNode.cs" />
      <Compile Include="Assets\Scripts\startScene\ButtonClicked.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerUI.cs" />
-     <Compile Include="Assets\Scripts\Hangar Minigame\ParkingSpot.cs" />
-     <Compile Include="Assets\Scripts\Hangar Minigame\Ship.cs" />
-     <Compile Include="Assets\Scripts\Hangar Minigame\TransferSpot.cs" />
-     <Compile Include="Assets\Scripts\Hangar Minigame\HangarGround.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\LandingPlatform.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\Flight.cs" />
      <None Include="Assets\Fonts\OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

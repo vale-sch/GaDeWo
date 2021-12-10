@@ -13,7 +13,7 @@ public class HangarManager : MonoBehaviour {
         foreach (Transform child in transform) {
             ParkingSpot parkSpotScript = child.GetComponent<ParkingSpot>();
             GameObject ship = Instantiate(shipPrefabs[(int)parkSpotScript.shipType], parkSpotScript.dockPoint.position, parkSpotScript.dockPoint.rotation);
-            parkSpotScript.SetAsParkingSpot(ship);
+            parkSpotScript.ParkShip(ship);
         }
     }
 }

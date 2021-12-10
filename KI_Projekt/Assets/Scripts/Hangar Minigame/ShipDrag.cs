@@ -21,13 +21,19 @@ public class ShipDrag : MonoBehaviour {
         if (hitObject.GetComponent<ParkingSpot>() && hitObject.GetComponent<ParkingSpot>().shipType == shipType) {
             transform.position = hitObject.GetComponent<ParkingSpot>().dockPoint.position;
             transform.rotation = hitObject.GetComponent<ParkingSpot>().dockPoint.rotation;
-            hitObject.GetComponent<ParkingSpot>().SetAsParkingSpot(gameObject);
+            hitObject.GetComponent<ParkingSpot>().ParkShip(gameObject);
             return;
         }
-        if (hitObject.GetComponent<TransferSpot>()) {
+        if (hitObject.GetComponent<TransferSpot>() && shipType == ShipType.FRACHTER) {
             transform.position = hitObject.GetComponent<TransferSpot>().dockPoint.position;
             transform.rotation = hitObject.GetComponent<TransferSpot>().dockPoint.rotation;
             parkingSpot.GetComponent<ParkingSpot>().LeaveParkingSpot();
+            return;
+        }
+        if (hitObject.GetComponent<LandingPlatform>()) {
+            transform.position = hitObject.GetComponent<LandingPlatform>().dockPoint.position;
+            transform.rotation = hitObject.GetComponent<LandingPlatform>().dockPoint.rotation;
+            hitObject.GetComponent<LandingPlatform>().PrepareFlight(gameObject);
             return;
         }
         transform.position = oldShipPosition;
