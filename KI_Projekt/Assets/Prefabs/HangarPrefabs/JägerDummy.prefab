@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3163834395856628728}
   - component: {fileID: 7124414604381955216}
   - component: {fileID: 1503081966792069597}
+  - component: {fileID: 1533531522194228166}
+  - component: {fileID: 1357012671430701066}
   m_Layer: 0
   m_Name: "J\xE4gerDummy"
   m_TagString: Untagged
@@ -108,3 +110,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100574ad6010dc44aac3db9ec7f36161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipType: 0
+  parkingSpot: {fileID: 0}
+--- !u!114 &1533531522194228166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401321188526791279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54cd3658c24653408e81b2d3d6a58a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFlight: 0
+--- !u!54 &1357012671430701066
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401321188526791279}
+  serializedVersion: 2
+  m_Mass: 2
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
