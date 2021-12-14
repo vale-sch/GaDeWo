@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShipDrag : MonoBehaviour {
     public ShipType shipType;
-    [HideInInspector] public GameObject parkingSpot;
+    [HideInInspector] public GameObject shipPlatform;
     private Vector3 offset;
     private float mouseZPos;
     private Vector3 oldShipPosition;
@@ -18,22 +18,26 @@ public class ShipDrag : MonoBehaviour {
         Ray downRay = new Ray(transform.position, Vector3.down);
         Physics.Raycast(downRay, out hit);
         GameObject hitObject = hit.collider.gameObject;
-        if (hitObject.GetComponent<ParkingSpot>() && hitObject.GetComponent<ParkingSpot>().shipType == shipType) {
-            transform.position = hitObject.GetComponent<ParkingSpot>().dockPoint.position;
-            transform.rotation = hitObject.GetComponent<ParkingSpot>().dockPoint.rotation;
-            hitObject.GetComponent<ParkingSpot>().ParkShip(gameObject);
-            return;
-        }
-        if (hitObject.GetComponent<TransferSpot>() && shipType == ShipType.FRACHTER) {
-            transform.position = hitObject.GetComponent<TransferSpot>().dockPoint.position;
-            transform.rotation = hitObject.GetComponent<TransferSpot>().dockPoint.rotation;
-            parkingSpot.GetComponent<ParkingSpot>().LeaveParkingSpot();
-            return;
-        }
-        if (hitObject.GetComponent<LandingPlatform>()) {
-            transform.position = hitObject.GetComponent<LandingPlatform>().dockPoint.position;
-            transform.rotation = hitObject.GetComponent<LandingPlatform>().dockPoint.rotation;
-            hitObject.GetComponent<LandingPlatform>().PrepareFlight(gameObject);
+
+        if (hitObject.GetComponent<ShipPlatform>() && hitObject.GetComponent<ShipPlatform>().ship == null && AssertShipType(hitObject.GetComponent<ShipPlatform>().shipType)) {
+            ShipPlatform shipPlatformScript = hitObject.GetComponent<ShipPlatform>();
+
+            transform.position = shipPlatformScript.dockPoint.position;
+            transform.rotation = shipPlatformScript.dockPoint.rotation;
+
+            shipPlatformScript.ParkShip(gameObject);
+
+            switch (shipPlatformScript.platformType) {
+                case PlatformType.PARK:
+                    break;
+                case PlatformType.TRANSFER:
+                    // Transfer Behaviour
+                    break;
+
+                case PlatformType.LANDING:
+                    hitObject.GetComponent<LandingPlatform>().PrepareFlight(gameObject);
+                    break;
+            }
             return;
         }
         transform.position = oldShipPosition;
@@ -46,6 +50,11 @@ public class ShipDrag : MonoBehaviour {
     }
     private void OnMouseDrag() {
         if (AssertPosition()) transform.position = GetMouseWorldPosition() + offset;
+    }
+
+    private bool AssertShipType(ShipType _shipType) {
+        if (_shipType == shipType || _shipType == ShipType.ALL) return true;
+        return false;
     }
 
     private bool AssertPosition() {

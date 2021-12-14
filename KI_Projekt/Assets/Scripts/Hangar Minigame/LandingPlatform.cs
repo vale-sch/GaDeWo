@@ -2,18 +2,28 @@ using System.Collections;
 using UnityEngine;
 
 public class LandingPlatform : MonoBehaviour {
-    public Transform dockPoint;
-    [HideInInspector] public GameObject ship;
-
-    public void PrepareFlight(GameObject _ship) {
-        if (_ship.GetComponent<ShipDrag>().parkingSpot != null) _ship.GetComponent<ShipDrag>().parkingSpot.GetComponent<ParkingSpot>().LeaveParkingSpot();
-        _ship.GetComponent<ShipDrag>().parkingSpot = gameObject;
-        this.ship = _ship;
-        StartCoroutine(FlyShip());
+    public Transform landingPoint;
+    [HideInInspector] public GameObject[] shipsInSpace;
+    private void Start() {
+        shipsInSpace = new GameObject[10];
     }
 
-    private IEnumerator FlyShip() {
+    public void PrepareFlight(GameObject _ship) {
+        SendShipToSpace(_ship);
+        StartCoroutine(FlyShip(_ship));
+    }
+
+    private void SendShipToSpace(GameObject _ship) {
+        for (int i = 0; i < shipsInSpace.Length; i++) {
+            if (shipsInSpace[i] == null) {
+                shipsInSpace[i] = _ship;
+                return;
+            }
+        }
+    }
+
+    private IEnumerator FlyShip(GameObject _ship) {
         yield return new WaitForSeconds(3);
-        ship.GetComponent<Flight>().isFlight = true;
+        _ship.GetComponent<Flight>().isFlying = true;
     }
 }

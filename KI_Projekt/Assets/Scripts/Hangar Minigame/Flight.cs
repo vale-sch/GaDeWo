@@ -1,25 +1,26 @@
 using UnityEngine;
 
 public class Flight : MonoBehaviour {
-    [HideInInspector] public bool isFlight = false;
+    [HideInInspector] public bool isFlying = false;
+    public bool isInSpace = false;
     private Vector3 lastPosition;
     float distanceTraveled = 0;
-    private float flySpeed = 10000;
-    private Rigidbody rb;
-    private void Start() {
-        rb = gameObject.GetComponent<Rigidbody>();
-    }
-    void Update() {
-        if (isFlight) Fly();
+    private float flySpeed = 1;
+
+    private void Update() {
+        if (isFlying) Fly();
     }
 
     private void Fly() {
         UpdateDistance();
         if (distanceTraveled < 150) {
-            rb.AddForce(transform.forward * Time.deltaTime * flySpeed);
+            transform.Translate(Vector3.forward * Time.deltaTime * flySpeed);
+            flySpeed += 0.5f;
             return;
         }
-        //Ship Taken Off Behaviour
+        isInSpace = true;
+        //Countdown till ship is back -> GameData (maybe Time.time - timestamp)
+        //Save state to GameData
         Destroy(gameObject);
     }
 
