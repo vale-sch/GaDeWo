@@ -22,6 +22,11 @@ public static class GameData {
     public static int crewSupplies;
     public static int logisticsSupplies;
 
+    //Hangar Minigame
+    public static Ship[] shipsInHangar;
+    public static Ship[] shipsInSpace;
+    public static bool hangarIsInitialized;
+
     static GameData() {
         energy = maxEnergy;
         weaponEnergy = 0;
@@ -36,5 +41,7 @@ public static class GameData {
         engineeringSupplies = 0;
         crewSupplies = 0;
         logisticsSupplies = 0;
+
+        hangarIsInitialized = false;
     }
 }

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/miniGameB.unity
     guid: a9bf08977ab7ed744b7fee0b4a0bf7b6
+  - enabled: 1
+    path: Assets/Scenes/hangarMiniGame.unity
+    guid: 27a72e0c4d4de994fa99005257d0c335
   m_configObjects: {}

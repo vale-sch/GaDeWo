@@ -2,26 +2,50 @@ using UnityEngine;
 
 public class Flight : MonoBehaviour {
     [HideInInspector] public bool isFlying = false;
-    public bool isInSpace = false;
+    public bool isLanding = false;
+    public HangarManager hangarManager;
     private Vector3 lastPosition;
-    float distanceTraveled = 0;
-    private float flySpeed = 1;
+    private float distanceTraveled = 0;
+    private float flyingSpeed = 1;
+    private float landingSpeed = 100;
+
+    private void Start() {
+        hangarManager = HangarManager.instance;
+    }
 
     private void Update() {
         if (isFlying) Fly();
+        if (isLanding) Land();
     }
 
     private void Fly() {
         UpdateDistance();
         if (distanceTraveled < 150) {
-            transform.Translate(Vector3.forward * Time.deltaTime * flySpeed);
-            flySpeed += 0.5f;
+            transform.Translate(Vector3.forward * Time.deltaTime * flyingSpeed);
+            flyingSpeed += 0.5f;
             return;
         }
-        isInSpace = true;
-        //Countdown till ship is back -> GameData (maybe Time.time - timestamp)
-        //Save state to GameData
+        gameObject.GetComponent<ShipDrag>().isInSpace = true;
+        gameObject.GetComponent<ShipDrag>().timeStamp = Mathf.Round(Time.time + GetTimeInSpace());
+        hangarManager.SaveSpaceShip(gameObject);
         Destroy(gameObject);
+    }
+
+    private void Land() {
+        UpdateDistance();
+        Debug.Log(distanceTraveled);
+        if (distanceTraveled < 200) {
+            transform.Translate(Vector3.forward * Time.deltaTime * landingSpeed);
+            if (landingSpeed > 1) landingSpeed -= 0.1f;
+            return;
+        }
+        isLanding = false;
+        distanceTraveled = 0;
+    }
+
+    private float GetTimeInSpace() {
+        //return Random.Range(120, 181);
+        return Random.Range(5, 10); //for testing
     }
 
     private void UpdateDistance() {

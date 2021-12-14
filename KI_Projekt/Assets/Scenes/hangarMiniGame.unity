@@ -494,9 +494,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3755be7c401fa644a36a4b0220b89a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1762197368}
   shipPrefabs:
   - {fileID: 8401321188526791279, guid: 3a6cc4b5818bf9749a7a572949dd6f95, type: 3}
   - {fileID: 5327157585977884402, guid: 79213f26fab1de948b1ec947a1ab83df, type: 3}
+  landingPoint: {fileID: 1836691482}
 --- !u!1001 &610748036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -518,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6427115079081585508, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_Name
-      value: "ParkingSpotJ\xE4ger (1)"
+      value: "ParkingPlatformJ\xE4ger (1)"
       objectReference: {fileID: 0}
     - target: {fileID: 7698509440989727010, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_RootOrder
@@ -670,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6427115079081585508, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_Name
-      value: "ParkingSpotJ\xE4ger (7)"
+      value: "ParkingPlatformJ\xE4ger (7)"
       objectReference: {fileID: 0}
     - target: {fileID: 7698509440989727010, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_RootOrder
@@ -1007,7 +1009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingPoint: {fileID: 1836691482}
-  shipsInSpace: []
+  ship: {fileID: 0}
 --- !u!65 &1203571474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1225,7 +1227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349750847004737472, guid: df90b773f069bd84ea9f9c71e68b1738, type: 3}
       propertyPath: m_Name
-      value: ParkingSpotFrachter (1)
+      value: ParkingPlatformFrachter (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7988949143687423874, guid: df90b773f069bd84ea9f9c71e68b1738, type: 3}
       propertyPath: m_Name
@@ -1303,7 +1305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6427115079081585508, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_Name
-      value: "ParkingSpotJ\xE4ger (4)"
+      value: "ParkingPlatformJ\xE4ger (4)"
       objectReference: {fileID: 0}
     - target: {fileID: 7698509440989727010, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_RootOrder
@@ -1381,7 +1383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6427115079081585508, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_Name
-      value: "ParkingSpotJ\xE4ger (3)"
+      value: "ParkingPlatformJ\xE4ger (3)"
       objectReference: {fileID: 0}
     - target: {fileID: 7698509440989727010, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_RootOrder
@@ -1540,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6427115079081585508, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_Name
-      value: "ParkingSpotJ\xE4ger (5)"
+      value: "ParkingPlatformJ\xE4ger (5)"
       objectReference: {fileID: 0}
     - target: {fileID: 7698509440989727010, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_RootOrder
@@ -1618,7 +1620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6427115079081585508, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_Name
-      value: "ParkingSpotJ\xE4ger (6)"
+      value: "ParkingPlatformJ\xE4ger (6)"
       objectReference: {fileID: 0}
     - target: {fileID: 7698509440989727010, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_RootOrder
@@ -1696,7 +1698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6427115079081585508, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_Name
-      value: "ParkingSpotJ\xE4ger (2)"
+      value: "ParkingPlatformJ\xE4ger (2)"
       objectReference: {fileID: 0}
     - target: {fileID: 7698509440989727010, guid: 3a5871377edbb2743949f9c198b494cb, type: 3}
       propertyPath: m_RootOrder
@@ -1821,7 +1823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831179012}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.16874999, y: 3.02, z: 0}
+  m_LocalPosition: {x: 0.16874999, y: 3.02, z: 0.26785713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1203571477}
@@ -1851,7 +1853,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836691481}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.25, y: 3.02, z: 0}
+  m_LocalPosition: {x: 0.74883336, y: 3.02, z: -0.2678571}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1203571477}
@@ -2098,8 +2100,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CargoManager, Assembly-CSharp
+      - m_Target: {fileID: 453305371}
+        m_TargetAssemblyTypeName: HangarManager, Assembly-CSharp
         m_MethodName: PrepareSceneChange
         m_Mode: 1
         m_Arguments:

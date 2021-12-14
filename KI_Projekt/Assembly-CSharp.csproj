@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Hangar Minigame\ShipPlatform.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\GrabberController.cs" />
      <Compile Include="Assets\Scripts\Hangar Minigame\Flight.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\CargoManager.cs" />
@@ -77,7 +78,6 @@
      <Compile Include="Assets\ShaderEdit.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerUI.cs" />
      <Compile Include="Assets\ShaderGraph_Dissolve\Utility\Scripts\Rotator.cs" />
-     <Compile Include="Assets\Scripts\Hangar Minigame\ShipPlatform.cs" />
      <None Include="Assets\Fonts\OFL.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
