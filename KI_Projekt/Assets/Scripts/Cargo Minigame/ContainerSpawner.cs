@@ -3,6 +3,7 @@ using UnityEngine;
 public class ContainerSpawner : MonoBehaviour {
     public GameObject[] containerPrefab;
     public Transform spawnPoint;
+    public AudioSource containerSpawnSound;
     private float countdown = 5f;
 
     private void Update() {
@@ -16,6 +17,7 @@ public class ContainerSpawner : MonoBehaviour {
     }
 
     private void SpawnContainer() {
+        if (!containerSpawnSound.isPlaying) containerSpawnSound.Play();
         GameObject instContainer = Instantiate(containerPrefab[GetPrefabWithProbability()], spawnPoint.position, Quaternion.identity);
         instContainer.GetComponent<CargoContainer>().department = (Department)Random.Range(1, 6);
         instContainer.transform.parent = transform;
