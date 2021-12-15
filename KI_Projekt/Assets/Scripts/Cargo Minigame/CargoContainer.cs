@@ -8,6 +8,7 @@ public class CargoContainer : MonoBehaviour {
     public bool isOnTriggerEnter = false;
     public bool hasTriggered = false;
     public bool isRevealed = false;
+    public AudioSource containerSound;
     private ContainerUI ui;
 
     private void Awake() {
@@ -16,7 +17,10 @@ public class CargoContainer : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider) {
         if (!isOnTriggerEnter) return;
-        if (collider.GetComponent<CargoContainer>() || collider.GetComponent<CargoNode>() || collider.GetComponent<TransferNode>()) hasTriggered = true;
+        if (collider.GetComponent<CargoContainer>() || collider.GetComponent<CargoNode>() || collider.GetComponent<TransferNode>()) {
+            hasTriggered = true;
+            if(!containerSound.isPlaying)containerSound.Play();
+        }
     }
 
     private void OnMouseDown() {
