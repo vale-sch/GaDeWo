@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 public class GrabberController : MonoBehaviour {
+    public AudioSource containerLiftUpSound;
+    private bool containerSoundIsPlaying = false;
     public float panSpeed = 30f;
     public float minX = -40f;
     public float maxX = 100f;
@@ -94,12 +96,22 @@ public class GrabberController : MonoBehaviour {
             transform.parent.Translate(Vector3.down * 5 * Time.deltaTime, Space.World);
             return;
         }
+        if (!containerSoundIsPlaying) {
+            containerSoundIsPlaying = true;
+            containerLiftUpSound.Play();
+            StartCoroutine(PlayContainerSound());
+        }
         if (transform.parent.position.y < maxY) {
             transform.parent.Translate(Vector3.up * 5 * Time.deltaTime, Space.World);
             return;
         }
         grabRend.material.color = redGrabHelper;
         isGrabbing = false;
+    }
+
+    private IEnumerator PlayContainerSound() {
+        yield return new WaitForSeconds(4);
+        containerSoundIsPlaying = false;
     }
 
     private void CheckRelease() {
