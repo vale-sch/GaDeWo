@@ -10,14 +10,12 @@ public class CompartmentManager : MonoBehaviour {
     // Start is called before the first frame update
     void Update() {
         if (cameraObject.transform.position.y < 30 && !isDissolved) {
-            Debug.Log("HALO");
-            spaceShipShell.SetActive(false);
-            spaceShipInnerrooms.SetActive(true);
+            spaceShipShell.SetActive(!spaceShipShell.activeSelf);
+            spaceShipInnerrooms.SetActive(!spaceShipInnerrooms.activeSelf);
             isDissolved = true;
         } else if (cameraObject.transform.position.y > 30 && isDissolved) {
-            Debug.Log("Peter");
-            spaceShipShell.SetActive(true);
-            spaceShipInnerrooms.SetActive(false);
+            spaceShipShell.SetActive(!spaceShipShell.activeSelf);
+            spaceShipInnerrooms.SetActive(!spaceShipInnerrooms.activeSelf);
             isDissolved = false;
         }
     }

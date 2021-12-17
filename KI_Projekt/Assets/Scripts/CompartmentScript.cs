@@ -7,9 +7,10 @@ public class CompartmentScript : MonoBehaviour {
     private Color c;
     private Color cA;
     void Awake() {
-        c = this.gameObject.GetComponent<MeshRenderer>().material.color;
-        cA = c;
-        cA.a = 1;
+        c = this.gameObject.GetComponent<MeshRenderer>().material.GetColor("_BaseColor");
+
+        cA = c * 2.5f;
+
     }
 
     void OnMouseDown() {
@@ -17,10 +18,10 @@ public class CompartmentScript : MonoBehaviour {
     }
     void OnMouseOver() {
 
-        this.gameObject.GetComponent<MeshRenderer>().material.color = cA;
+        this.gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", cA);
 
     }
     void OnMouseExit() {
-        this.gameObject.GetComponent<MeshRenderer>().material.color = c;
+        this.gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", c);
     }
 }
