@@ -3,10 +3,13 @@ using UnityEngine;
 
 public enum ShipType { JÄGER, FRACHTER, ALL }
 public enum PlatformType { PARK, TRANSFER, LANDING }
+
 public class HangarManager : MonoBehaviour {
     public static HangarManager instance;
     public GameManager gameManager;
     public GameObject[] shipPrefabs; //Jäger - 0; Frachter - 1
+    public ShipPlatform transferShipPlatform;
+    public ShipPlatform landingShipPlatform;
     private Ship[] shipsInHangar;
     [HideInInspector] public Ship[] shipsInSpace;
     public Transform landingPoint;
@@ -91,6 +94,7 @@ public class HangarManager : MonoBehaviour {
                 shipsInHangar[child.GetSiblingIndex()] = new Ship(shipType, position, rotation, isInSpace, timeStamp);
             }
         }
+        
         GameData.shipsInHangar = shipsInHangar;
         GameData.shipsInSpace = shipsInSpace;
         GameData.hangarIsInitialized = true;

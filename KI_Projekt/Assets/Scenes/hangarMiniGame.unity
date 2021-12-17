@@ -498,6 +498,8 @@ MonoBehaviour:
   shipPrefabs:
   - {fileID: 8401321188526791279, guid: 3a6cc4b5818bf9749a7a572949dd6f95, type: 3}
   - {fileID: 5327157585977884402, guid: 79213f26fab1de948b1ec947a1ab83df, type: 3}
+  transferShipPlatform: {fileID: 4226831267799966423}
+  landingShipPlatform: {fileID: 1203571478}
   landingPoint: {fileID: 1836691482}
 --- !u!1001 &610748036
 PrefabInstance:
