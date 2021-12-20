@@ -33,7 +33,6 @@ public class Flight : MonoBehaviour {
 
     private void Land() {
         UpdateDistance();
-        Debug.Log(distanceTraveled);
         if (distanceTraveled < 200) {
             transform.Translate(Vector3.forward * Time.deltaTime * landingSpeed);
             if (landingSpeed > 1) landingSpeed -= 0.1f;

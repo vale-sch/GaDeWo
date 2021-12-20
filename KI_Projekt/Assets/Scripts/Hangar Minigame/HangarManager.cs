@@ -8,8 +8,6 @@ public class HangarManager : MonoBehaviour {
     public static HangarManager instance;
     public GameManager gameManager;
     public GameObject[] shipPrefabs; //Jäger - 0; Frachter - 1
-    public ShipPlatform transferShipPlatform;
-    public ShipPlatform landingShipPlatform;
     private Ship[] shipsInHangar;
     [HideInInspector] public Ship[] shipsInSpace;
     public Transform landingPoint;
@@ -66,11 +64,14 @@ public class HangarManager : MonoBehaviour {
     }
 
     private void InitializeShips() {
+        int index = 0;
         shipsInSpace = new Ship[transform.childCount];
         foreach (Transform child in transform) {
+            if (index >= 10) return;
             ShipPlatform shipPlatformScript = child.GetComponent<ShipPlatform>();
             GameObject ship = Instantiate(shipPrefabs[(int)shipPlatformScript.shipType], shipPlatformScript.dockPoint.position, shipPlatformScript.dockPoint.rotation);
             shipPlatformScript.ParkShip(ship);
+            index++;
         }
     }
 
@@ -80,6 +81,7 @@ public class HangarManager : MonoBehaviour {
     }
 
     private void SaveSceneStatus() {
+        int shipCount = 0;
         shipsInHangar = new Ship[transform.childCount];
         foreach (Transform child in transform) {
             GameObject ship = child.GetComponent<ShipPlatform>().ship;
@@ -87,14 +89,22 @@ public class HangarManager : MonoBehaviour {
             else {
                 ShipDrag shipDragScript = ship.GetComponent<ShipDrag>();
                 ShipType shipType = shipDragScript.shipType;
-                Vector3 position = ship.transform.position;
+                Vector3 position = shipDragScript.shipPlatform.GetComponent<ShipPlatform>().dockPoint.position;
                 Quaternion rotation = ship.transform.rotation;
                 bool isInSpace = shipDragScript.isInSpace;
                 float timeStamp = shipDragScript.timeStamp;
+
                 shipsInHangar[child.GetSiblingIndex()] = new Ship(shipType, position, rotation, isInSpace, timeStamp);
+                shipCount++;
             }
         }
-        
+        foreach (Ship ship in shipsInSpace) {
+            if (ship != null) shipCount++;
+        }
+        if (shipCount < 10) {
+            Debug.Log("Ship not saved!");
+        }
+
         GameData.shipsInHangar = shipsInHangar;
         GameData.shipsInSpace = shipsInSpace;
         GameData.hangarIsInitialized = true;

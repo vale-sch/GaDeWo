@@ -9,6 +9,7 @@ public class ShipDrag : MonoBehaviour {
     private Vector3 offset;
     private float mouseZPos;
     private Vector3 oldShipPosition;
+    private bool shipIsTakingOff = false;
 
     private void Start() {
         landingPlatformScript = GameObject.Find("LandingPlatform").GetComponent<LandingPlatform>();
@@ -33,6 +34,7 @@ public class ShipDrag : MonoBehaviour {
                     isInSpace = false;
                     StartCoroutine(landingPlatformScript.LeaveLandingPlatform());
                     SetToPlatform(shipPlatformScript);
+                    //do transfer stuff
                     return;
                 }
                 if (shipType == ShipType.JÄGER && shipPlatformScript.platformType == PlatformType.PARK) {
@@ -51,7 +53,10 @@ public class ShipDrag : MonoBehaviour {
 
             SetToPlatform(shipPlatformScript);
 
-            if (shipPlatformScript.platformType == PlatformType.LANDING) hitObject.GetComponent<LandingPlatform>().PrepareFlight(gameObject);
+            if (shipPlatformScript.platformType == PlatformType.LANDING) {
+                hitObject.GetComponent<LandingPlatform>().PrepareFlight(gameObject);
+                shipIsTakingOff = true;
+            }
             return;
         }
         transform.position = oldShipPosition;
@@ -69,6 +74,7 @@ public class ShipDrag : MonoBehaviour {
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
     private void OnMouseDrag() {
+        if (shipIsTakingOff) return;
         if (AssertPosition()) transform.position = GetMouseWorldPosition() + offset;
     }
 
