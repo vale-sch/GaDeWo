@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
     // Start is called before the first frame update
+    [HideInInspector]
+    public Vector3 flyDir;
     void Start() {
         StartCoroutine(DestroyMySelf());
     }
 
     // Update is called once per frame
     void Update() {
-        this.transform.Translate(Vector3.up, Space.World);
+        this.transform.Translate(flyDir, Space.World);
     }
     IEnumerator DestroyMySelf() {
         yield return new WaitForSeconds(2.5f);
