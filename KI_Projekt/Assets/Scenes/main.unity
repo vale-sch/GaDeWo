@@ -4259,7 +4259,7 @@ GameObject:
   - component: {fileID: 1055283103380061120}
   - component: {fileID: 1055283103380061119}
   m_Layer: 0
-  m_Name: hangar
+  m_Name: cargo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4277,7 +4277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f5d60ba9637eb4dadeb7138f80dde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneToLoad: hangarMiniGame
+  gameSceneToLoad: miniGameA
 --- !u!64 &1055283103380061120
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5447,7 +5447,7 @@ GameObject:
   - component: {fileID: 6523321906164563508}
   - component: {fileID: 6523321906164563509}
   m_Layer: 0
-  m_Name: frachtraum
+  m_Name: hangar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5479,7 +5479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f5d60ba9637eb4dadeb7138f80dde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneToLoad: miniGameA
+  gameSceneToLoad: hangarMiniGame
 --- !u!33 &6554830708544161034
 MeshFilter:
   m_ObjectHideFlags: 0
