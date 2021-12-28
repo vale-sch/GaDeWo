@@ -34,7 +34,8 @@ public class ShipDrag : MonoBehaviour {
                     isInSpace = false;
                     StartCoroutine(landingPlatformScript.LeaveLandingPlatform());
                     SetToPlatform(shipPlatformScript);
-                    //do transfer stuff
+                    GameData.containersInTransfer++;
+                    GameData.newContainerInTransfer = true;
                     return;
                 }
                 if (shipType == ShipType.JÄGER && shipPlatformScript.platformType == PlatformType.PARK) {

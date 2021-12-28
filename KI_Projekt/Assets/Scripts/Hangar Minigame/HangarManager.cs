@@ -13,6 +13,7 @@ public class HangarManager : MonoBehaviour {
     public Transform landingPoint;
     private LandingPlatform landingPlatformScript;
     private bool sceneIsSaved = false;
+    public AudioSource shipArrivalSound;
 
     private void Awake() {
         if (instance != null) {
@@ -38,6 +39,7 @@ public class HangarManager : MonoBehaviour {
         for (int i = 0; i < shipsInSpace.Length; i++) {
             if (shipsInSpace[i] != null) {
                 if (Time.time > shipsInSpace[i].timeStamp) {
+                    if (!shipArrivalSound.isPlaying) shipArrivalSound.Play();
                     ProcessShipArrival(i);
                     return;
                 }

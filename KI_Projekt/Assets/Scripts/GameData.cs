@@ -15,6 +15,8 @@ public static class GameData {
 
     //Cargo Minigame
     public static Container[][] containerGrid;
+    public static int containersInTransfer;
+    public static bool newContainerInTransfer;
     public static bool cargoIsInitialized;
     public static int bridgeSupplies;
     public static int fightingSupplies;
@@ -35,6 +37,9 @@ public static class GameData {
         sensorEnergy = 0;
 
         cargoIsInitialized = false;
+
+        containersInTransfer = 0;
+        newContainerInTransfer = false;
 
         bridgeSupplies = 0;
         fightingSupplies = 0;

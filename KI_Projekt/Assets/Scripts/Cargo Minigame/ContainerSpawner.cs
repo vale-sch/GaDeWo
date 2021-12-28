@@ -7,7 +7,7 @@ public class ContainerSpawner : MonoBehaviour {
     private float countdown = 5f;
 
     private void Update() {
-        if (transform.childCount > 1) return;
+        if (transform.childCount > 1 || GameData.containersInTransfer <= 0) return;
         if (countdown <= 0f) {
             SpawnContainer();
             countdown = Random.Range(4f, 8f);
@@ -17,6 +17,7 @@ public class ContainerSpawner : MonoBehaviour {
     }
 
     private void SpawnContainer() {
+        GameData.containersInTransfer--;
         if (!containerSpawnSound.isPlaying) containerSpawnSound.Play();
         GameObject instContainer = Instantiate(containerPrefab[GetPrefabWithProbability()], spawnPoint.position, Quaternion.identity);
         instContainer.GetComponent<CargoContainer>().department = (Department)Random.Range(1, 6);
