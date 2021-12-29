@@ -10,9 +10,11 @@ public class ShipDrag : MonoBehaviour {
     private float mouseZPos;
     private Vector3 oldShipPosition;
     private bool shipIsTakingOff = false;
+    private HangarUI hangarUI;
 
     private void Start() {
         landingPlatformScript = GameObject.Find("LandingPlatform").GetComponent<LandingPlatform>();
+        hangarUI = HangarUI.instance;
     }
 
     private void OnMouseDown() {
@@ -35,7 +37,7 @@ public class ShipDrag : MonoBehaviour {
                     StartCoroutine(landingPlatformScript.LeaveLandingPlatform());
                     SetToPlatform(shipPlatformScript);
                     GameData.containersInTransfer++;
-                    GameData.newContainerInTransfer = true;
+                    hangarUI.DisplayText(hangarUI.transferText);
                     return;
                 }
                 if (shipType == ShipType.JÄGER && shipPlatformScript.platformType == PlatformType.PARK) {
@@ -45,6 +47,7 @@ public class ShipDrag : MonoBehaviour {
                     return;
                 }
             }
+            hangarUI.DisplayText(hangarUI.spaceErrorText);
             transform.position = oldShipPosition;
             return;
         }

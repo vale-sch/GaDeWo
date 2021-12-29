@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\CompartmentScript.cs" />
      <Compile Include="Assets\RotateGunCamera.cs" />
      <Compile Include="Assets\Scripts\startScene\WalkBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Hangar Minigame\HangarUI.cs" />
      <Compile Include="Assets\Scripts\TextWriter.cs" />
      <Compile Include="Assets\Scripts\Hangar Minigame\HangarManager.cs" />
      <Compile Include="Assets\Scripts\ShootingGame\SpawnThreats.cs" />
@@ -76,7 +77,6 @@
      <Compile Include="Assets\Scripts\startScene\ButtonClicked.cs" />
      <Compile Include="Assets\ShaderEdit.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerUI.cs" />
-     <Compile Include="Assets\Scripts\Hangar Minigame\TransferUI.cs" />
      <None Include="Assets\Shaders\StipleEffect\Stiplle Unlite Shader.shader" />
      <None Include="Assets\Shaders\WireFrameEffect\WireFrame.shader" />
      <None Include="Assets\Shaders\StipleEffect\Stiplle shader\Stiplle Unlite Shader.shader" />

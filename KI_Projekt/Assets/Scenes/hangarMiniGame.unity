@@ -1003,7 +1003,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f191cf3c88f4bf4289d6da38f41711e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transferText: {fileID: 2078346372}
+  textField: {fileID: 2078346374}
+  transferText: SUPPLIES TRANSFERRED TO CARGO
+  spaceErrorText: SHIP NEEDS TO BE UNLOADED/CHARGED FIRST
 --- !u!1 &1014532705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +2132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2078346373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2183,7 +2185,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SUPPLIES TRANSFERRED TO CARGO
+  m_Text: 
 --- !u!222 &2078346375
 CanvasRenderer:
   m_ObjectHideFlags: 0
