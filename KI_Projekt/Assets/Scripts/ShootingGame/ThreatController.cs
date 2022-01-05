@@ -19,6 +19,7 @@ public class ThreatController : MonoBehaviour {
             Destroy(this.gameObject);
     }
     void OnTriggerEnter(Collider spaceObject) {
+        Debug.Log(spaceObject.name);
         if (spaceObject.GetComponent<BulletScript>())
             if (this.gameObject) {
                 Destroy(spaceObject.gameObject);
