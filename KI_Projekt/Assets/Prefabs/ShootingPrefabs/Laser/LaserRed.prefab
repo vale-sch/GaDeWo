@@ -145,6 +145,8 @@ MonoBehaviour:
     m_intermittent: 0
     m_intervalTime: 2
     m_initialTimingPhase: 0
+  startWidth: 0
+  endWidth: 0
 --- !u!1 &1725746904631676
 GameObject:
   m_ObjectHideFlags: 0

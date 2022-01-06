@@ -10,8 +10,7 @@ public class EnergyBar : MonoBehaviour {
     public Image shieldFill;
     public Image sensorFill;
     public Image navigationFill;
-
-    private void SetFillAmount(string energyType) {
+    public void SetFillAmount(string energyType) {
         if (energyType == weapon) weaponFill.fillAmount = GameData.weaponEnergy / 100;
 
         if (energyType == shield) shieldFill.fillAmount = GameData.shieldEnergy / 100;

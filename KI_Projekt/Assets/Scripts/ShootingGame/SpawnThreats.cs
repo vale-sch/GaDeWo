@@ -9,7 +9,7 @@ public class SpawnThreats : MonoBehaviour {
     }
 
     IEnumerator spawnThreat() {
-        int timeToSpawn = Random.Range(0, 3);
+        int timeToSpawn = Random.Range(5, 13);
         yield return new WaitForSeconds(timeToSpawn);
         int randomXPosition = Random.Range(-275, 275);
         int randomThreatPrefabNum = Random.Range(0, threats.Length);

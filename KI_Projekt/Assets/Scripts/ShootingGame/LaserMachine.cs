@@ -2,215 +2,179 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Lightbug.LaserMachine {
 
 
 
-    public class LaserMachine : MonoBehaviour {
 
-        struct LaserElement {
-            public Transform transform;
-            public LineRenderer lineRenderer;
-            public GameObject sparks;
-            public bool impact;
-        };
+public class LaserMachine : MonoBehaviour {
 
-        List<LaserElement> elementsList = new List<LaserElement>();
+    struct LaserElement {
+        public Transform transform;
+        public LineRenderer lineRenderer;
+        public GameObject sparks;
+        public bool impact;
+    };
 
-
-        [Header("External Data")]
-
-        [SerializeField] LaserData m_data;
-
-        [Tooltip("This variable is true by default, all the inspector properties will be overridden.")]
-        [SerializeField] bool m_overrideExternalProperties = true;
-
-        public LaserProperties m_inspectorProperties = new LaserProperties();
+    List<LaserElement> elementsList = new List<LaserElement>();
 
 
-        LaserProperties m_currentProperties;// = new LaserProperties();
+    [Header("External Data")]
 
-        float m_time = 0;
-        bool m_active = true;
-        bool m_assignLaserMaterial;
-        bool m_assignSparks;
+    [SerializeField] LaserData m_data;
 
+    [Tooltip("This variable is true by default, all the inspector properties will be overridden.")]
+    [SerializeField] bool m_overrideExternalProperties = true;
 
-
-        void OnEnable() {
-            m_currentProperties = m_overrideExternalProperties ? m_inspectorProperties : m_data.m_properties;
+    public LaserProperties m_inspectorProperties = new LaserProperties();
 
 
-            m_currentProperties.m_initialTimingPhase = Mathf.Clamp01(m_currentProperties.m_initialTimingPhase);
-            m_time = m_currentProperties.m_initialTimingPhase * m_currentProperties.m_intervalTime;
+    LaserProperties m_currentProperties;// = new LaserProperties();
+
+    float m_time = 0;
+    bool m_active = true;
+    bool m_assignLaserMaterial;
+    bool m_assignSparks;
+
+    public float startWidth;
+    public float endWidth;
+
+    void OnEnable() {
+        m_currentProperties = m_overrideExternalProperties ? m_inspectorProperties : m_data.m_properties;
 
 
-            float angleStep = m_currentProperties.m_angularRange / m_currentProperties.m_raysNumber;
+        m_currentProperties.m_initialTimingPhase = Mathf.Clamp01(m_currentProperties.m_initialTimingPhase);
+        m_time = m_currentProperties.m_initialTimingPhase * m_currentProperties.m_intervalTime;
 
-            m_assignSparks = m_data.m_laserSparks != null;
-            m_assignLaserMaterial = m_data.m_laserMaterial != null;
 
-            for (int i = 0; i < m_currentProperties.m_raysNumber; i++) {
-                LaserElement element = new LaserElement();
+        float angleStep = m_currentProperties.m_angularRange / m_currentProperties.m_raysNumber;
 
-                GameObject newObj = new GameObject("lineRenderer_" + i.ToString());
+        m_assignSparks = m_data.m_laserSparks != null;
+        m_assignLaserMaterial = m_data.m_laserMaterial != null;
 
-                if (m_currentProperties.m_physicsType == LaserProperties.PhysicsType.Physics2D)
-                    newObj.transform.position = (Vector2)transform.position;
-                else
-                    newObj.transform.position = transform.position;
+        for (int i = 0; i < m_currentProperties.m_raysNumber; i++) {
+            LaserElement element = new LaserElement();
 
-                newObj.transform.rotation = transform.rotation;
-                newObj.transform.Rotate(Vector3.up, i * angleStep);
-                newObj.transform.position += newObj.transform.forward * m_currentProperties.m_minRadialDistance;
+            GameObject newObj = new GameObject("lineRenderer_" + i.ToString());
 
-                newObj.AddComponent<LineRenderer>();
+            if (m_currentProperties.m_physicsType == LaserProperties.PhysicsType.Physics2D)
+                newObj.transform.position = (Vector2)transform.position;
+            else
+                newObj.transform.position = transform.position;
 
-                if (m_assignLaserMaterial)
-                    newObj.GetComponent<LineRenderer>().material = m_data.m_laserMaterial;
+            newObj.transform.rotation = transform.rotation;
+            newObj.transform.Rotate(Vector3.up, i * angleStep);
+            newObj.transform.position += newObj.transform.forward * m_currentProperties.m_minRadialDistance;
 
-                newObj.GetComponent<LineRenderer>().receiveShadows = false;
-                newObj.GetComponent<LineRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-                newObj.GetComponent<LineRenderer>().startWidth = m_currentProperties.m_rayWidth;
-                newObj.GetComponent<LineRenderer>().useWorldSpace = true;
-                newObj.GetComponent<LineRenderer>().SetPosition(0, newObj.transform.position);
-                newObj.GetComponent<LineRenderer>().SetPosition(1, newObj.transform.position + transform.forward * m_currentProperties.m_maxRadialDistance);
-                newObj.transform.SetParent(transform);
+            newObj.AddComponent<LineRenderer>();
 
-                if (m_assignSparks) {
-                    GameObject sparks = Instantiate(m_data.m_laserSparks);
-                    sparks.transform.SetParent(newObj.transform);
-                    sparks.SetActive(false);
-                    element.sparks = sparks;
-                }
+            if (m_assignLaserMaterial)
+                newObj.GetComponent<LineRenderer>().material = m_data.m_laserMaterial;
 
-                element.transform = newObj.transform;
-                element.lineRenderer = newObj.GetComponent<LineRenderer>();
-                element.impact = false;
+            newObj.GetComponent<LineRenderer>().receiveShadows = false;
+            newObj.GetComponent<LineRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            newObj.GetComponent<LineRenderer>().startWidth = m_currentProperties.m_rayWidth;
+            newObj.GetComponent<LineRenderer>().useWorldSpace = true;
+            newObj.GetComponent<LineRenderer>().SetPosition(0, newObj.transform.position);
+            newObj.GetComponent<LineRenderer>().SetPosition(1, newObj.transform.position + transform.forward * m_currentProperties.m_maxRadialDistance);
+            newObj.transform.SetParent(transform);
 
-                elementsList.Add(element);
+            if (m_assignSparks) {
+                GameObject sparks = Instantiate(m_data.m_laserSparks);
+                sparks.transform.SetParent(newObj.transform);
+                sparks.SetActive(false);
+                element.sparks = sparks;
             }
 
+            element.transform = newObj.transform;
+            element.lineRenderer = newObj.GetComponent<LineRenderer>();
+            element.impact = false;
+            element.lineRenderer.startWidth = startWidth;
+            element.lineRenderer.endWidth = endWidth;
+            elementsList.Add(element);
         }
-
-
-        void Update() {
-
-            if (m_currentProperties.m_intermittent) {
-                m_time += Time.deltaTime;
-
-                if (m_time >= m_currentProperties.m_intervalTime) {
-                    m_active = !m_active;
-                    m_time = 0;
-                    return;
-                }
-            }
-
-            RaycastHit2D hitInfo2D;
-            RaycastHit hitInfo3D;
-
-            foreach (LaserElement element in elementsList) {
-                if (m_currentProperties.m_rotate) {
-                    if (m_currentProperties.m_rotateClockwise)
-                        element.transform.RotateAround(transform.position, transform.up, Time.deltaTime * m_currentProperties.m_rotationSpeed);    //rotate around Global!!
-                    else
-                        element.transform.RotateAround(transform.position, transform.up, -Time.deltaTime * m_currentProperties.m_rotationSpeed);
-                }
-
-
-                if (m_active) {
-                    element.lineRenderer.enabled = true;
-                    element.lineRenderer.startWidth = 2;
-                    element.lineRenderer.endWidth = 2;
-                    element.lineRenderer.SetPosition(0, element.transform.position);
-
-                    if (m_currentProperties.m_physicsType == LaserProperties.PhysicsType.Physics3D) {
-                        Physics.Linecast(
-                            element.transform.position,
-                            element.transform.position + element.transform.forward * m_currentProperties.m_maxRadialDistance,
-                            out hitInfo3D,
-                            m_currentProperties.m_layerMask
-                        );
-
-
-                        if (hitInfo3D.collider) {
-                            element.lineRenderer.SetPosition(1, hitInfo3D.point);
-
-                            if (m_assignSparks) {
-                                element.sparks.transform.position = hitInfo3D.point; //new Vector3(rhit.point.x, rhit.point.y, transform.position.z);
-                                element.sparks.transform.rotation = Quaternion.LookRotation(hitInfo3D.normal);
-                            }
-                            if (hitInfo3D.collider.gameObject.GetComponent<ThreatController>()) {
-                                Destroy(hitInfo3D.collider.gameObject);
-                                this.m_inspectorProperties.m_maxRadialDistance = 0;
-                            }
-
-                        } else {
-
-                            element.lineRenderer.SetPosition(1, element.transform.position + element.transform.forward * m_currentProperties.m_maxRadialDistance);
-
-                        }
-
-                        if (m_assignSparks)
-                            element.sparks.SetActive(hitInfo3D.collider != null);
-                    } else {
-                        hitInfo2D = Physics2D.Linecast(
-                            element.transform.position,
-                            element.transform.position + element.transform.forward * m_currentProperties.m_maxRadialDistance,
-                            m_currentProperties.m_layerMask
-                        );
-
-
-                        if (hitInfo2D.collider) {
-                            element.lineRenderer.SetPosition(1, hitInfo2D.point);
-
-                            if (m_assignSparks) {
-                                element.sparks.transform.position = hitInfo2D.point; //new Vector3(rhit.point.x, rhit.point.y, transform.position.z);
-                                element.sparks.transform.rotation = Quaternion.LookRotation(hitInfo2D.normal);
-                            }
-
-                            /*
-                            EXAMPLE : In this line you can add whatever functionality you want, 
-                            for example, if the hitInfoXD.collider is not null do whatever thing you wanna do to the target object.
-                            DoAction();
-                            */
-
-                        } else {
-                            element.lineRenderer.SetPosition(1, element.transform.position + element.transform.forward * m_currentProperties.m_maxRadialDistance);
-
-                        }
-
-                        if (m_assignSparks)
-                            element.sparks.SetActive(hitInfo2D.collider != null);
-
-                    }
-
-
-
-
-
-
-
-                } else {
-                    element.lineRenderer.enabled = false;
-
-                    if (m_assignSparks)
-                        element.sparks.SetActive(false);
-                }
-            }
-
-        }
-
-        /*
-        EXAMPLE : 
-        void DoAction()
-        {
-
-        }
-        */
-
 
     }
 
 
+    void Update() {
+
+        if (m_currentProperties.m_intermittent) {
+            m_time += Time.deltaTime;
+
+            if (m_time >= m_currentProperties.m_intervalTime) {
+                m_active = !m_active;
+                m_time = 0;
+                return;
+            }
+        }
+
+        RaycastHit hitInfo3D;
+
+        foreach (LaserElement element in elementsList) {
+            if (m_currentProperties.m_rotate) {
+                if (m_currentProperties.m_rotateClockwise)
+                    element.transform.RotateAround(transform.position, transform.up, Time.deltaTime * m_currentProperties.m_rotationSpeed);    //rotate around Global!!
+                else
+                    element.transform.RotateAround(transform.position, transform.up, -Time.deltaTime * m_currentProperties.m_rotationSpeed);
+            }
+
+
+            if (m_active) {
+                element.lineRenderer.enabled = true;
+
+                element.lineRenderer.SetPosition(0, element.transform.position);
+
+                if (m_currentProperties.m_physicsType == LaserProperties.PhysicsType.Physics3D) {
+                    Physics.Linecast(
+                        element.transform.position,
+                        element.transform.position + element.transform.forward * m_currentProperties.m_maxRadialDistance,
+                        out hitInfo3D,
+                        m_currentProperties.m_layerMask
+                    );
+
+
+                    if (hitInfo3D.collider) {
+                        element.lineRenderer.SetPosition(1, hitInfo3D.point);
+
+                        if (m_assignSparks) {
+                            element.sparks.transform.position = hitInfo3D.point; //new Vector3(rhit.point.x, rhit.point.y, transform.position.z);
+                            element.sparks.transform.rotation = Quaternion.LookRotation(hitInfo3D.normal);
+                        }
+                        if (hitInfo3D.collider.gameObject.GetComponent<ThreatController>()) {
+                            Destroy(hitInfo3D.collider.gameObject);
+                            this.m_inspectorProperties.m_maxRadialDistance = 0;
+                        }
+
+                    } else {
+
+                        element.lineRenderer.SetPosition(1, element.transform.position + element.transform.forward * m_currentProperties.m_maxRadialDistance);
+
+                    }
+
+                    if (m_assignSparks)
+                        element.sparks.SetActive(hitInfo3D.collider != null);
+                }
+
+            } else {
+                element.lineRenderer.enabled = false;
+
+                if (m_assignSparks)
+                    element.sparks.SetActive(false);
+            }
+        }
+
+    }
+
+    /*
+    EXAMPLE : 
+    void DoAction()
+    {
+
+    }
+    */
+
+
 }
+
+
+
