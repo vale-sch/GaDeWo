@@ -14,6 +14,9 @@ public class TerminalText : MonoBehaviour {
 
     private bool isDisabled;
 
+    public AudioSource bootingSound;
+    public AudioSource cantinaChatter;
+
     private void Start() {
         for (int i = 0; i <= textArr.Length - 1; i++) {
             textArr[i] = textArr[i].Replace("NEWLINE", "\n");
@@ -28,6 +31,8 @@ public class TerminalText : MonoBehaviour {
 
         arrIndex = 0;
         textWritten = null;
+        if (!bootingSound.isPlaying) bootingSound.Play();
+        StartCoroutine(playCantinaChatter());
     }
 
     private void Update() {
@@ -40,11 +45,14 @@ public class TerminalText : MonoBehaviour {
             else StartCoroutine(WriteText(textArr[arrIndex], 0));
         }
     }
-
+    private IEnumerator playCantinaChatter() {
+        yield return new WaitForSeconds(20);
+        cantinaChatter.Play();
+    }
     private IEnumerator WriteText(string text, float secondsToWait) {
         isNextTextReady = false;
         yield return new WaitForSeconds(secondsToWait);
-        textWriter.AddWriter(terminalText, text, 0.01f, true, textWritten);
+        textWriter.AddWriter(terminalText, text, 0.07f, true, textWritten);
         if (arrIndex <= textArr.Length - 1) textWritten += textArr[arrIndex];
         arrIndex++;
     }

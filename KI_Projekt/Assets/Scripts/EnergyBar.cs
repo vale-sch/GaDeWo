@@ -10,6 +10,7 @@ public class EnergyBar : MonoBehaviour {
     public Image shieldFill;
     public Image sensorFill;
     public Image navigationFill;
+    public AudioSource energyRestored;
     public void SetFillAmount(string energyType) {
         if (energyType == weapon) weaponFill.fillAmount = GameData.weaponEnergy / 100;
 
@@ -28,6 +29,7 @@ public class EnergyBar : MonoBehaviour {
             GameData.weaponEnergy += 10;
             GameData.energy -= 10;
             SetFillAmount(weapon);
+            energyRestored.Play();
         }
     }
     public void AddShieldEnergy() {
@@ -37,6 +39,7 @@ public class EnergyBar : MonoBehaviour {
             GameData.shieldEnergy += 10;
             GameData.energy -= 10;
             SetFillAmount(shield);
+            energyRestored.Play();
         }
     }
     public void AddSensorEnergy() {
@@ -46,6 +49,7 @@ public class EnergyBar : MonoBehaviour {
             GameData.sensorEnergy += 10;
             GameData.energy -= 10;
             SetFillAmount(sensor);
+            energyRestored.Play();
         }
     }
     public void AddNavigationEnergy() {
@@ -55,6 +59,7 @@ public class EnergyBar : MonoBehaviour {
             GameData.navigationEnergy += 10;
             GameData.energy -= 10;
             SetFillAmount(navigation);
+            energyRestored.Play();
         }
     }
 
