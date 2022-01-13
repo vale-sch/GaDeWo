@@ -11,6 +11,7 @@ public class ShipDrag : MonoBehaviour {
     private Vector3 oldShipPosition;
     private bool shipIsTakingOff = false;
     private HangarUI hangarUI;
+    public float energy = 100;
 
     private void Start() {
         landingPlatformScript = GameObject.Find("LandingPlatform").GetComponent<LandingPlatform>();
@@ -54,10 +55,13 @@ public class ShipDrag : MonoBehaviour {
 
         if (hitObject.GetComponent<ShipPlatform>() && hitObject.GetComponent<ShipPlatform>().ship == null && AssertShipType(hitObject.GetComponent<ShipPlatform>().shipType)) {
             ShipPlatform shipPlatformScript = hitObject.GetComponent<ShipPlatform>();
-
+            if (shipPlatformScript.platformType == PlatformType.LANDING && energy <= 0) {
+                transform.position = oldShipPosition;
+                hangarUI.DisplayText(hangarUI.spaceErrorText);
+                return;
+            }
             SetToPlatform(shipPlatformScript);
-
-            if (shipPlatformScript.platformType == PlatformType.LANDING) {
+            if (shipPlatformScript.platformType == PlatformType.LANDING && energy > 0) {
                 hitObject.GetComponent<LandingPlatform>().PrepareFlight(gameObject);
                 shipIsTakingOff = true;
             }

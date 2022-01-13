@@ -10,6 +10,7 @@ public static class GameData {
     public static float navigationEnergy;
     public static float shieldEnergy;
     public static float sensorEnergy;
+    public static float logisticsEnergy;
     public static float shipHealth;
     public static float progress;
 
@@ -34,6 +35,7 @@ public static class GameData {
         navigationEnergy = 0;
         shieldEnergy = 0;
         sensorEnergy = 0;
+        logisticsEnergy = 0;
 
         cargoIsInitialized = false;
 

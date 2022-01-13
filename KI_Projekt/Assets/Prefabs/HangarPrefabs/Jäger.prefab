@@ -637,6 +637,7 @@ MonoBehaviour:
   isInSpace: 0
   timeStamp: 0
   shipPlatform: {fileID: 0}
+  energy: 100
 --- !u!114 &3963001045334029767
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -43,8 +43,11 @@ public class Flight : MonoBehaviour {
     }
 
     private float GetTimeInSpace() {
-        //return Random.Range(120, 181);
-        return Random.Range(5, 10); //for testing
+        float time = Random.Range(5, 10); //Random.Range(120, 181);
+        float energy = gameObject.GetComponent<ShipDrag>().energy;
+        time *= energy / 100;
+        Debug.Log("energy: " + energy + ", time: " + time);
+        return time;
     }
 
     private void UpdateDistance() {

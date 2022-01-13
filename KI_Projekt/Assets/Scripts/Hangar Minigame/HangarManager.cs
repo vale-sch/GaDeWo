@@ -51,6 +51,7 @@ public class HangarManager : MonoBehaviour {
         GameObject returningShip = Instantiate(shipPrefabs[(int)shipsInSpace[shipNumber].shipType], landingPoint.position, landingPoint.rotation);
         returningShip.GetComponent<ShipDrag>().isInSpace = true;
         returningShip.GetComponent<Flight>().isLanding = true;
+        returningShip.GetComponent<ShipDrag>().energy = 0;
         landingPlatformScript.ProcessShipArrival(returningShip);
         shipsInSpace[shipNumber] = null;
     }
@@ -59,7 +60,7 @@ public class HangarManager : MonoBehaviour {
         for (int i = 0; i < shipsInSpace.Length; i++) {
             if (shipsInSpace[i] == null) {
                 ShipDrag shipDragScript = _ship.GetComponent<ShipDrag>();
-                shipsInSpace[i] = new Ship(shipDragScript.shipType, _ship.transform.position, _ship.transform.rotation, shipDragScript.isInSpace, shipDragScript.timeStamp);
+                shipsInSpace[i] = new Ship(shipDragScript.shipType, _ship.transform.position, _ship.transform.rotation, shipDragScript.isInSpace, shipDragScript.timeStamp, shipDragScript.energy);
                 return;
             }
         }
@@ -95,8 +96,8 @@ public class HangarManager : MonoBehaviour {
                 Quaternion rotation = ship.transform.rotation;
                 bool isInSpace = shipDragScript.isInSpace;
                 float timeStamp = shipDragScript.timeStamp;
-
-                shipsInHangar[child.GetSiblingIndex()] = new Ship(shipType, position, rotation, isInSpace, timeStamp);
+                float energy = shipDragScript.energy;
+                shipsInHangar[child.GetSiblingIndex()] = new Ship(shipType, position, rotation, isInSpace, timeStamp, energy);
                 shipCount++;
             }
         }
@@ -127,6 +128,7 @@ public class HangarManager : MonoBehaviour {
             if (shipIndex != null) {
                 GameObject newShip = Instantiate(shipPrefabs[(int)shipIndex.shipType], shipIndex.position, shipIndex.rotation);
                 shipPlatformScript.ParkShip(newShip);
+                newShip.GetComponent<ShipDrag>().energy = shipIndex.energy;
             }
             platformIndex++;
         }
