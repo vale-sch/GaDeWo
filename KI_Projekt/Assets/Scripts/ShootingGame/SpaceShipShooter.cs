@@ -81,10 +81,17 @@ public class SpaceShipShooter : MonoBehaviour {
             }
         }
         if (Input.GetKey(KeyCode.E) && !setTractor) {
+            if (isFlak)
+                StartCoroutine(ChangeGun(flak, null));
+            if (isRail)
+                StartCoroutine(ChangeGun(railGun, null));
+
             StartCoroutine(ChangeTractorState());
         }
     }
     IEnumerator ActivateGun(GameObject gun) {
+        if (isTractor)
+            StartCoroutine(ChangeTractorState());
         float dis = Vector3.Distance(gun.transform.position, extendGunPos.position);
         while (dis > 0.1f) {
             gun.transform.position = Vector3.Lerp(gun.transform.position, extendGunPos.position, Time.deltaTime * extendSpeed);
@@ -101,18 +108,16 @@ public class SpaceShipShooter : MonoBehaviour {
             dis = Vector3.Distance(gun.transform.position, disabledGunPos.transform.position);
             yield return null;
         }
-        StartCoroutine(ActivateGun(gunToActivate));
+        if (gunToActivate)
+            StartCoroutine(ActivateGun(gunToActivate));
     }
     public IEnumerator ChangeTractorState() {
         setTractor = true;
-
         if (!isTractor) {
-
             isTractor = true;
             tractorMachine.gameObject.GetComponent<RotateGunCamera>().enabled = true;
             tractorMachine.m_inspectorProperties.m_maxRadialDistance = 12;
         } else {
-
             isTractor = false;
             tractorMachine.gameObject.GetComponent<RotateGunCamera>().enabled = false;
             tractorMachine.m_inspectorProperties.m_maxRadialDistance = 0;

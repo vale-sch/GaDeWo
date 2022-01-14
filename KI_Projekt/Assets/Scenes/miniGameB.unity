@@ -1098,8 +1098,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 552c0827ae70f4a8497c62ad3c99f91b, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.898
+  m_PlayOnAwake: 0
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1283,7 +1283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -82.76, y: 0}
+  m_AnchoredPosition: {x: -96, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1638753086
@@ -1323,7 +1323,10 @@ MonoBehaviour:
 
     A, D -> Control Spaceshipt
 
-    Space -> Shoot Bullets
+    Q, W, E -> Switch Input
+    Actions
+
+    Left Mouse -> Shoot Bullets
 
 
 '
