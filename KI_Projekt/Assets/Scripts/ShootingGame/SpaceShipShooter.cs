@@ -33,17 +33,22 @@ public class SpaceShipShooter : MonoBehaviour {
         if (totalEnergy == 0) {
             loadEnergyText.SetActive(true);
             return;
+        } else {
+            loadEnergyText.SetActive(false);
         }
         if (GameData.weaponEnergy < totalEnergy) {
             if (GameData.weaponEnergy <= 0f)
                 if (isTractor)
                     StartCoroutine(ChangeTractorState());
-            GameData.weaponEnergy += 0.025f;
+            GameData.weaponEnergy += 0.075f;
             energyBar.SetFillAmount("Weapon");
 
         }
 
         CheckInput();
+    }
+    public void AddToTotalEnergy() {
+        totalEnergy += 10;
     }
     void CheckInput() {
         if (Input.GetKey(KeyCode.D))

@@ -14,7 +14,7 @@ public class ThreatController : MonoBehaviour {
 
     }
     IEnumerator DestroyMySelf() {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(10f);
         if (this.gameObject)
             Destroy(this.gameObject);
     }
