@@ -28,6 +28,7 @@ public class ThreatController : MonoBehaviour {
             if (this.gameObject) {
                 Destroy(spaceObject.transform.root.gameObject);
                 gameOverText.SetActive(!gameOverText.activeSelf);
+                this.GetComponent<AudioSource>().Play();
             }
     }
-}
+} 

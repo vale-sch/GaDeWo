@@ -13,10 +13,13 @@ public class RotateGunCamera : MonoBehaviour {
     private float startCoolDown;
     private bool hasShoot;
 
+    private AudioSource laserShot;
+
 
 
     void Start() {
         startCoolDown = coolDown;
+        laserShot = this.GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -45,6 +48,7 @@ public class RotateGunCamera : MonoBehaviour {
                 GameData.weaponEnergy -= 0.1f;
                 energyBar.SetFillAmount("Weapon");
                 this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance = 150f;
+                laserShot.Play();
             }
 
             if (!hasShoot) {
