@@ -24,8 +24,8 @@ public class SpawnWalkers : MonoBehaviour {
         } while (!walkerCache.GetComponent<WalkBehaviour>().isServed);
         StartCoroutine(DestroyOldWalker(walkerCache));
         walkerCache = null;
-        yield return new WaitForSeconds(Random.Range(4, 6));
-        StartCoroutine(spawnWalker());
+
+
     }
     IEnumerator DestroyOldWalker(GameObject _walkerOld) {
         int increment = 0;
@@ -37,7 +37,9 @@ public class SpawnWalkers : MonoBehaviour {
         do {
             yield return null;
         } while (_walkerOld.GetComponent<WalkBehaviour>().waypoints.Length - 1 != _walkerOld.GetComponent<WalkBehaviour>().waypointIndex);
+        yield return new WaitForSeconds(0.25f);
         Destroy(_walkerOld);
-
+        yield return new WaitForSeconds(0.25f);
+        StartCoroutine(spawnWalker());
     }
 }

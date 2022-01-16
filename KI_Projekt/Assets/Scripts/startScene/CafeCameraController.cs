@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CafeCameraController : MonoBehaviour {
     public SpawnWalkers spawnWalkers;
@@ -49,6 +50,9 @@ public class CafeCameraController : MonoBehaviour {
                 popularityNmb -= 10;
             }
             popularity.text = "popularity: " + popularityNmb;
+            if (popularityNmb == 60)
+                SceneManager.LoadScene("main");
+
         }
     }
 }

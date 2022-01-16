@@ -19,7 +19,7 @@ public class VolumeRealtimeEdit : MonoBehaviour {
 
     void Update() {
 
-        if (vignette.intensity.value > 0.6f) {
+        if (vignette.intensity.value > 0.4f) {
             vignette.intensity.value -= Time.fixedDeltaTime * 0.045f;
             vignette.smoothness.value -= Time.fixedDeltaTime * 0.035f;
         } else {

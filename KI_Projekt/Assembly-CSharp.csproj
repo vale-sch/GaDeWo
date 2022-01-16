@@ -80,9 +80,10 @@
      <Compile Include="Assets\Scripts\ShootingGame\LaserData.cs" />
      <Compile Include="Assets\Scripts\Cargo Minigame\ContainerUI.cs" />
      <None Include="Assets\Shaders\StipleEffect\Stiplle Unlite Shader.shader" />
-     <None Include="Assets\Shaders\WireFrameEffect\WireFrame.shader" />
      <None Include="Assets\Shaders\StipleEffect\Stiplle shader\Stiplle Unlite Shader.shader" />
      <None Include="Assets\Fonts\OFL.txt" />
+     <None Include="Assets\Shaders\Wireframe\Shaders\UCLA GameLab Wireframe Functions.cginc" />
+     <None Include="Assets\Shaders\Wireframe\Shaders\UCLA GameLab Double-Sided Wireframe.shader" />
     <Reference Include="UnityEngine">
         <HintPath>E:/Programs/unityEditors/2020.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

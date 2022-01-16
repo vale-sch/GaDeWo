@@ -58,7 +58,7 @@ public class TerminalText : MonoBehaviour {
     }
     IEnumerator DisableMyself() {
         isDisabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         this.gameObject.GetComponentInChildren<Image>().enabled = false;
         this.gameObject.GetComponentInChildren<Text>().enabled = false;
         this.transform.GetChild(this.transform.childCount - 1).gameObject.SetActive(true);
