@@ -4,10 +4,15 @@ public class ContainerSpawner : MonoBehaviour {
     public GameObject[] containerPrefab;
     public Transform spawnPoint;
     public AudioSource containerSpawnSound;
+    public GameObject noCargoText;
     private float countdown = 5f;
 
     private void Update() {
-        if (transform.childCount > 1 || GameData.containersInTransfer <= 0) return;
+        if (GameData.containersInTransfer <= 0) {
+            noCargoText.SetActive(true);
+            return;
+        } else noCargoText.SetActive(false);
+        if (transform.childCount > 1) return;
         if (countdown <= 0f) {
             SpawnContainer();
             countdown = Random.Range(4f, 8f);
