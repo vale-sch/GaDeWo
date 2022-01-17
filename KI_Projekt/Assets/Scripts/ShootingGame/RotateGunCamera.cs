@@ -43,8 +43,8 @@ public class RotateGunCamera : MonoBehaviour {
     void CheckInput() {
         this.transform.rotation = Quaternion.Euler(Input.mousePosition.x, 90, -90);
         if (Input.GetKey(KeyCode.Mouse0)) {
-            if (weaponType == "rail" && this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance != 150f) {
-                this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance = 150f;
+            if (weaponType == "rail" && this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance != 250f) {
+                this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance = 250f;
                 laserShot.Play();
             }
             if (!hasShoot) {
@@ -62,7 +62,7 @@ public class RotateGunCamera : MonoBehaviour {
             GameData.weaponEnergy -= 0.1f;
             energyBar.SetFillAmount("Weapon");
         }
-        if (weaponType == "rail" && this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance == 150f) {
+        if (weaponType == "rail" && this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance == 250f) {
             GameData.weaponEnergy -= 0.1f;
             energyBar.SetFillAmount("Weapon");
         }
