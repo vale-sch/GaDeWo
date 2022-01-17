@@ -37,6 +37,8 @@ public class LaserMachine : MonoBehaviour {
 
     public float startWidth;
     public float endWidth;
+    public bool isTractor;
+    public SpaceShipShooter spaceShipShooter;
 
     void OnEnable() {
         m_currentProperties = m_overrideExternalProperties ? m_inspectorProperties : m_data.m_properties;
@@ -143,6 +145,11 @@ public class LaserMachine : MonoBehaviour {
                         if (hitInfo3D.collider.gameObject.GetComponent<ThreatController>()) {
                             Destroy(hitInfo3D.collider.gameObject);
                             this.m_inspectorProperties.m_maxRadialDistance = 0;
+                        }
+                        if (hitInfo3D.collider.gameObject.GetComponent<ContainerSprite>() && isTractor) {
+                            Destroy(hitInfo3D.collider.gameObject);
+                            StartCoroutine(spaceShipShooter.ChangeTractorState());
+                            GameData.containersInTransfer++;
                         }
 
                     } else {

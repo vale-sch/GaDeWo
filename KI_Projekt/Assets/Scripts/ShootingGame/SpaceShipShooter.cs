@@ -61,6 +61,8 @@ public class SpaceShipShooter : MonoBehaviour {
             if (transform.root.position.x > minX) transform.root.transform.Translate(Vector3.left * movingSpeed * Time.fixedDeltaTime, Space.World);
 
         if (Input.GetKey(KeyCode.Q) && !isFlak) {
+            if (isTractor)
+                StartCoroutine(ChangeTractorState());
             if (isRail) {
                 StartCoroutine(ChangeGun(railGun, flak));
                 isFlak = true;
@@ -73,6 +75,8 @@ public class SpaceShipShooter : MonoBehaviour {
         }
 
         if (Input.GetKey(KeyCode.W) && !isRail) {
+            if (isTractor)
+                StartCoroutine(ChangeTractorState());
             if (isFlak) {
                 StartCoroutine(ChangeGun(flak, railGun));
                 isFlak = false;
@@ -84,11 +88,14 @@ public class SpaceShipShooter : MonoBehaviour {
             }
         }
         if (Input.GetKey(KeyCode.E) && !setTractor) {
-            if (isFlak)
+            if (isFlak) {
+                isFlak = false;
                 StartCoroutine(ChangeGun(flak, null));
-            if (isRail)
+            }
+            if (isRail) {
+                isRail = false;
                 StartCoroutine(ChangeGun(railGun, null));
-
+            }
             StartCoroutine(ChangeTractorState());
         }
     }
