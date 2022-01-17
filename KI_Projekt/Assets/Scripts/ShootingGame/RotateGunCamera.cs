@@ -43,14 +43,10 @@ public class RotateGunCamera : MonoBehaviour {
     void CheckInput() {
         this.transform.rotation = Quaternion.Euler(Input.mousePosition.x, 90, -90);
         if (Input.GetKey(KeyCode.Mouse0)) {
-            if (weaponType == "rail") {
-
-                GameData.weaponEnergy -= 0.1f;
-                energyBar.SetFillAmount("Weapon");
+            if (weaponType == "rail" && this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance != 150f) {
                 this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance = 150f;
                 laserShot.Play();
             }
-
             if (!hasShoot) {
                 GameData.weaponEnergy -= 10;
                 energyBar.SetFillAmount("Weapon");
@@ -66,11 +62,9 @@ public class RotateGunCamera : MonoBehaviour {
             GameData.weaponEnergy -= 0.1f;
             energyBar.SetFillAmount("Weapon");
         }
-        if (weaponType == "rail") {
-
+        if (weaponType == "rail" && this.transform.GetChild(this.transform.childCount - 1).GetComponent<LaserMachine>().m_inspectorProperties.m_maxRadialDistance == 150f) {
             GameData.weaponEnergy -= 0.1f;
             energyBar.SetFillAmount("Weapon");
         }
-
     }
 }

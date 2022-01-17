@@ -12,7 +12,7 @@ public class BulletScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        this.transform.Translate(flyDir, Space.World);
+        this.transform.Translate(flyDir * 2f, Space.World);
     }
     IEnumerator DestroyMySelf() {
         yield return new WaitForSeconds(2.5f);

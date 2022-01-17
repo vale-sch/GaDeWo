@@ -20,8 +20,8 @@ public class VolumeRealtimeEdit : MonoBehaviour {
     void Update() {
 
         if (vignette.intensity.value > 0.4f) {
-            vignette.intensity.value -= Time.fixedDeltaTime * 0.045f;
-            vignette.smoothness.value -= Time.fixedDeltaTime * 0.035f;
+            vignette.intensity.value -= Time.fixedDeltaTime * 0.2f;
+            vignette.smoothness.value -= Time.fixedDeltaTime * 0.175f;
         } else {
             cafeCameraController.enabled = true;
             spawnWalkers.enabled = true;

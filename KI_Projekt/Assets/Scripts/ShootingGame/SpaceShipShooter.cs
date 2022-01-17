@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpaceShipShooter : MonoBehaviour {
     public float minX;
     public float maxX;
-    public float movingSpeed;
+    public float movingSpeed = 5;
     [Range(0f, 6f)]
-    public float extendSpeed = 2;
+    public float extendSpeed = 5;
     public Transform extendGunPos;
     public Transform disabledGunPos;
     public GameObject flak;
@@ -40,7 +40,7 @@ public class SpaceShipShooter : MonoBehaviour {
             if (GameData.weaponEnergy <= 0f)
                 if (isTractor)
                     StartCoroutine(ChangeTractorState());
-            GameData.weaponEnergy += 0.075f;
+            GameData.weaponEnergy += 0.06f;
             energyBar.SetFillAmount("Weapon");
 
         }
@@ -50,12 +50,15 @@ public class SpaceShipShooter : MonoBehaviour {
     public void AddToTotalEnergy() {
         totalEnergy += 10;
     }
+    public void SetTotalEnergyOnLeave() {
+        GameData.weaponEnergy = totalEnergy;
+    }
     void CheckInput() {
         if (Input.GetKey(KeyCode.D))
-            if (transform.root.position.x < maxX) transform.root.transform.Translate(Vector3.right * movingSpeed * Time.deltaTime, Space.World);
+            if (transform.root.position.x < maxX) transform.root.transform.Translate(Vector3.right * movingSpeed * Time.fixedDeltaTime, Space.World);
 
         if (Input.GetKey(KeyCode.A))
-            if (transform.root.position.x > minX) transform.root.transform.Translate(Vector3.left * movingSpeed * Time.deltaTime, Space.World);
+            if (transform.root.position.x > minX) transform.root.transform.Translate(Vector3.left * movingSpeed * Time.fixedDeltaTime, Space.World);
 
         if (Input.GetKey(KeyCode.Q) && !isFlak) {
             if (isRail) {
@@ -94,7 +97,7 @@ public class SpaceShipShooter : MonoBehaviour {
             StartCoroutine(ChangeTractorState());
         float dis = Vector3.Distance(gun.transform.position, extendGunPos.position);
         while (dis > 0.1f) {
-            gun.transform.position = Vector3.Lerp(gun.transform.position, extendGunPos.position, Time.deltaTime * extendSpeed);
+            gun.transform.position = Vector3.Lerp(gun.transform.position, extendGunPos.position, Time.fixedDeltaTime * extendSpeed);
             dis = Vector3.Distance(gun.transform.position, extendGunPos.position);
             yield return null;
         }
@@ -104,7 +107,7 @@ public class SpaceShipShooter : MonoBehaviour {
         gun.transform.GetChild(gun.transform.childCount - 1).GetComponent<RotateGunCamera>().enabled = false;
         float dis = Vector3.Distance(gun.transform.position, disabledGunPos.transform.position);
         while (dis > 0.1f) {
-            gun.transform.position = Vector3.Lerp(gun.transform.position, disabledGunPos.transform.position, Time.deltaTime * extendSpeed);
+            gun.transform.position = Vector3.Lerp(gun.transform.position, disabledGunPos.transform.position, Time.fixedDeltaTime * extendSpeed);
             dis = Vector3.Distance(gun.transform.position, disabledGunPos.transform.position);
             yield return null;
         }
