@@ -143,7 +143,7 @@ public class LaserMachine : MonoBehaviour {
                             element.sparks.transform.rotation = Quaternion.LookRotation(hitInfo3D.normal);
                         }
                         if (hitInfo3D.collider.gameObject.GetComponent<ThreatController>()) {
-                            Destroy(hitInfo3D.collider.gameObject);
+                            StartCoroutine(DestroyThreat(hitInfo3D.collider.gameObject));
                             this.m_inspectorProperties.m_maxRadialDistance = 0;
                         }
                         if (hitInfo3D.collider.gameObject.GetComponent<ContainerSprite>() && isTractor) {
@@ -172,15 +172,16 @@ public class LaserMachine : MonoBehaviour {
 
     }
 
-    /*
-    EXAMPLE : 
-    void DoAction()
-    {
+    IEnumerator DestroyThreat(GameObject threat) {
+        if (threat.gameObject) {
+            threat.GetComponent<AudioSource>().Play();
+            threat.GetComponent<SpriteRenderer>().enabled = false;
+            threat.GetComponent<Collider>().enabled = false;
+            while (threat.GetComponent<AudioSource>().isPlaying)
+                yield return null;
 
+        }
     }
-    */
-
-
 }
 
 

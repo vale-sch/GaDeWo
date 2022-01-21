@@ -14,7 +14,7 @@ public class CafeCameraController : MonoBehaviour {
             transform.LookAt(spawnWalkers.walkerCache.transform, this.transform.up);
             if (!fillAmountFull)
                 if (spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount <= 0.99)
-                    spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount += Time.fixedDeltaTime * 0.25f;
+                    spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount += Time.fixedDeltaTime * 0.025f;
                 else {
                     fillAmountFull = true;
                     spawnWalkers.walkerCache.GetComponent<WalkBehaviour>().imageCircle.fillAmount = 0;
