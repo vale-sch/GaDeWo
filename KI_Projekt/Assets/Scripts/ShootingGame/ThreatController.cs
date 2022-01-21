@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThreatController : MonoBehaviour {
     private GameObject gameOverText;
+
+    public AudioSource destroySound;
 
     void Start() {
         StartCoroutine(DestroyMySelf());
@@ -21,8 +24,7 @@ public class ThreatController : MonoBehaviour {
     void OnTriggerEnter(Collider spaceObject) {
         if (spaceObject.GetComponent<BulletScript>())
             if (this.gameObject) {
-                Destroy(spaceObject.gameObject);
-                Destroy(this.gameObject);
+                StartCoroutine(playDestroySound(spaceObject.gameObject));
             }
         if (spaceObject.GetComponent<SpaceShipShooter>())
             if (this.gameObject) {
@@ -31,4 +33,15 @@ public class ThreatController : MonoBehaviour {
                 this.GetComponent<AudioSource>().Play();
             }
     }
-} 
+    IEnumerator playDestroySound(GameObject spaceObject) {
+        destroySound.Play();
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(spaceObject);
+        while (destroySound.isPlaying) {
+            yield return null;
+        }
+        Destroy(this.gameObject);
+
+    }
+}
+
